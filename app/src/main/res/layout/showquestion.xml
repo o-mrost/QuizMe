@@ -19,8 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/Answer1"
-            android:layout_weight="1"
-            android:onClick="showQuestion"/>
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/Answer2"
@@ -39,7 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/Answer3"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="checkAnswer"/>
 
         <Button
             android:id="@+id/Answer4"

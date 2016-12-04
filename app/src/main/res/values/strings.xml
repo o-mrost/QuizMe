@@ -9,4 +9,5 @@
     <string name="Answer2">Math was such a long time ago!</string>
     <string name="Answer3">I guess, it is 4, but I am not sure</string>
     <string name="Answer4">Can I have another question please?</string>
+    <string name="showNextQuestion">Show next question</string>
 </resources>
