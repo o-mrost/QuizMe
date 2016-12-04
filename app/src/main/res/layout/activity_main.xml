@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -7,11 +7,54 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="quizme.olgamrost.com.quizme.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/Quiz1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Quiz1"
+            android:layout_weight="1"
+            android:onClick="showQuestion"/>
+
+        <Button
+            android:id="@+id/Quiz2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Quiz2"
+            android:layout_weight="1"
+            android:onClick="showQuestion"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/Quiz3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Quiz3"
+            android:layout_weight="1"
+            android:onClick="showQuestion"/>
+
+        <Button
+            android:id="@+id/Quiz4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/Quiz4"
+            android:layout_weight="1"
+            android:onClick="showQuestion"/>
+
+    </LinearLayout>
+</LinearLayout>
