@@ -7,6 +7,10 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    int numberOfQuestionsAnswered;
+
+    public static final String KEY_NUMBEROFQUESTIONS = "questions";
+
     // variable for debugging
     public static final boolean DBG = true;
     private static final String CNAME = "MainActivity.";
@@ -14,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        numberOfQuestionsAnswered = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -21,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public void showQuestion (final View cmd){
 
         final Intent intent = new Intent(this, ShowQuestionsActivity.class);
+        intent.putExtra(KEY_NUMBEROFQUESTIONS, numberOfQuestionsAnswered);
         startActivity(intent);
     }
 }

@@ -27,9 +27,9 @@ public class ShowCorrectAnswerActivity extends Activity {
         }
     }
 
-
     protected void  showQuestion (final View cmd){
         Intent intent = new Intent(this, ShowQuestionsActivity.class);
+
         startActivity(intent);
     }
 }

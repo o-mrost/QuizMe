@@ -26,13 +26,15 @@ public class ShowQuestionsActivity extends Activity {
     String questionString;
     String [] answersArrayString;
     Boolean[] solutionArrayBool;
-    TextView question;
+    TextView question, questionNumber;
     Button answer1, answer2, answer3, answer4;
+    int questionsAnswered;
 
     public static final String KEY_ANSWERS = "answers";
     public static final String KEY_SOLUTIONS = "solutions";
     public static final String KEY_QUESTION = "question";
     public static final String KEY_BUTTON = "buttonPressed";
+    public static final String KEY_NUMBEROFQUESTIONS = "questions";
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -40,7 +42,15 @@ public class ShowQuestionsActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.showquestion);
 
+        final Bundle extras = getIntent().getExtras();
+        questionsAnswered = extras.getInt(MainActivity.KEY_NUMBEROFQUESTIONS);
+        questionsAnswered++;
+
+        Log.v("questions answered ", "" + questionsAnswered);
+
         question = (TextView) findViewById(R.id.question);
+        questionNumber = (TextView) findViewById(R.id.questionNumber);
+
         answer1 = (Button) findViewById(R.id.answer1);
         answer2 = (Button) findViewById(R.id.answer2);
         answer3 = (Button) findViewById(R.id.answer3);
@@ -49,6 +59,7 @@ public class ShowQuestionsActivity extends Activity {
         deserialiseJson();
 
         question.setText(questionString);
+        questionNumber.setText(questionsAnswered + ".");
         answer1.setText(answersArrayString[0]);
         answer2.setText(answersArrayString[1]);
         answer3.setText(answersArrayString[2]);
@@ -113,14 +124,16 @@ public class ShowQuestionsActivity extends Activity {
 
         final Intent intent = new Intent(this, ShowCorrectAnswerActivity.class);
 
-        // how to get here which of 4 buttons exactly was clicked?
+        // this button was clicked, but how to get true-false answer?
         intent.putExtra(KEY_BUTTON, cmd.getId());
 
         Log.v("button ", "clicked: " + cmd.getId());
+
         // information to pass to another activity
         intent.putExtra(KEY_QUESTION, questionString);
         intent.putExtra(KEY_ANSWERS, answersArrayString);
         intent.putExtra(KEY_SOLUTIONS, solutionArrayBool);
+        intent.putExtra(KEY_NUMBEROFQUESTIONS, questionsAnswered);
 
         startActivity(intent);
     }
