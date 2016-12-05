@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShowQuestionsPage"
+            android:name=".ShowQuestionsActivity"
             android:label="@string/app_name">
         </activity>
         <activity

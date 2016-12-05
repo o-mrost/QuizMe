@@ -16,11 +16,20 @@ public class ShowCorrectAnswerActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.showanswer);
 
-        TextView answerTrueOrFalse = (TextView) findViewById(R.id.answerTrueOrFalse);
-        answerTrueOrFalse.setText("The answer is correct!");
+        final Bundle extras = getIntent().getExtras();
+
+        if (extras != null){
+            TextView questionOnShowAnswer = (TextView) findViewById(R.id.questionOnShowAnswer);
+            TextView answerTrueOrFalse = (TextView) findViewById(R.id.answerTrueOrFalse);
+
+            questionOnShowAnswer.setText(extras.getString(ShowQuestionsActivity.KEY_QUESTION));
+            answerTrueOrFalse.setText("You clicked button: " + extras.getInt(ShowQuestionsActivity.KEY_BUTTON));
+        }
     }
+
+
     protected void  showQuestion (final View cmd){
-        Intent intent = new Intent(this, ShowQuestionsPage.class);
+        Intent intent = new Intent(this, ShowQuestionsActivity.class);
         startActivity(intent);
     }
 }

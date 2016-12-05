@@ -11,7 +11,12 @@ public class QuestionsAndAnswers {
     private String answer2;
     private String answer3;
     private String answer4;
-    private boolean answer1tf;
+    private boolean solution1;
+
+    // default constructor
+    public QuestionsAndAnswers(){
+
+    }
 
     public String getQuestion() {
         return question;
