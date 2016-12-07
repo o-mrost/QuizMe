@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">QuizMe</string>
+    <string name="title_activity_menu_main">MenuMain</string>
+    <string name="Categorie" />
+    <string name="Favorits" />
+    <string name="Databases" />
+    <string name="Marketing" />
+    <string name="Accounting" />
 </resources>
