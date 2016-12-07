@@ -3,6 +3,7 @@ package quizme.olgamrost.com.quizme;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,9 +24,10 @@ import java.io.InputStreamReader;
  */
 public class ShowQuestionsActivity extends Activity {
 
-    String questionString;
-    String [] answersArrayString;
+    String questionString, answerString, answerString1, answerString2, answerString3;
+    String[] answersArrayString;
     Boolean[] solutionArrayBool;
+    Boolean answerBool, answerBool1, answerBool2, answerBool3;
     TextView question, questionNumber;
     Button answer1, answer2, answer3, answer4;
     int questionsAnswered;
@@ -60,10 +62,58 @@ public class ShowQuestionsActivity extends Activity {
 
         question.setText(questionString);
         questionNumber.setText(questionsAnswered + ".");
-        answer1.setText(answersArrayString[0]);
-        answer2.setText(answersArrayString[1]);
-        answer3.setText(answersArrayString[2]);
-        answer4.setText(answersArrayString[3]);
+        answer1.setText(answerString);
+        answer2.setText(answerString1);
+        answer3.setText(answerString2);
+        answer4.setText(answerString3);
+
+        answer1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answerBool == true) {
+                    answer1.setBackgroundColor(Color.GREEN);
+                } else {
+                    answer1.setBackgroundColor(Color.RED);
+                }
+                ;
+            }
+        });
+
+        answer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answerBool1 == true) {
+                    answer2.setBackgroundColor(Color.GREEN);
+                } else {
+                    answer2.setBackgroundColor(Color.RED);
+                }
+                ;
+            }
+        });
+
+        answer3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answerBool2 == true) {
+                    answer3.setBackgroundColor(Color.GREEN);
+                } else {
+                    answer3.setBackgroundColor(Color.RED);
+                }
+                ;
+            }
+        });
+
+        answer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answerBool3 == true) {
+                    answer4.setBackgroundColor(Color.GREEN);
+                } else {
+                    answer4.setBackgroundColor(Color.RED);
+                }
+                ;
+            }
+        });
 
     }
 
@@ -93,24 +143,48 @@ public class ShowQuestionsActivity extends Activity {
             questionString = json.getString("question");
             Log.v("___ question ___", questionString);
 
-            JSONArray answerArray = json.getJSONArray("answers");
+            JSONArray answersArray = json.getJSONArray("answers");
 
-            answersArrayString = new String[answerArray.length()];
-            solutionArrayBool = new Boolean[answerArray.length()];
+            JSONObject answerObject = answersArray.getJSONObject(0);
+            Log.v("+++++", answerObject.toString());
+
+            answerString = answerObject.getString("answer");
+            answerBool = answerObject.getBoolean("solution");
+            Log.v("--- answerString ---", answerString);
+            Log.v("--- true - false ---", answerBool.toString());
+
+            JSONObject answerObject1 = answersArray.getJSONObject(1);
+            answerString1 = answerObject1.getString("answer");
+            answerBool1 = answerObject1.getBoolean("solution");
+            Log.v("--- answerString1 ---", answerString1);
+            Log.v("---   +++++", answerObject1.toString());
+
+            JSONObject answerObject2 = answersArray.getJSONObject(2);
+            answerString2 = answerObject2.getString("answer");
+            answerBool2 = answerObject2.getBoolean("solution");
+            Log.v("--- answerString2 ---", answerString2);
+
+            JSONObject answerObject3 = answersArray.getJSONObject(3);
+            answerString3 = answerObject3.getString("answer");
+            answerBool3 = answerObject3.getBoolean("solution");
+            Log.v("--- answerString3 ---", answerString3);
 
 
-            for (int i = 0; i < answerArray.length(); i++) {
-
-                JSONObject jsonObject = answerArray.getJSONObject(i);
-
-                String answer = jsonObject.getString("answer");
-                Log.v("__ answer" + i + " __", answer);
-                answersArrayString[i] = answer;
-
-                Boolean solution = jsonObject.getBoolean("solution");
-                Log.v("__ solution __ ", solution.toString());
-                solutionArrayBool[i] = solution;
-            }
+//            answersArrayString = new String[answerArray.length()];
+//            solutionArrayBool = new Boolean[answerArray.length()];
+//
+//            for (int i = 0; i < answerArray.length(); i++) {
+//
+//                JSONObject answerObject = answerArray.getJSONObject(i);
+//
+//                String answer = answerObject.getString("answer");
+//                Log.v("__ answer" + i + " __", answer);
+//                answersArrayString[i] = answer;
+//
+//                Boolean solution = answerObject.getBoolean("solution");
+//                Log.v("__ solution __ ", solution.toString());
+//                solutionArrayBool[i] = solution;
+//            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -120,7 +194,12 @@ public class ShowQuestionsActivity extends Activity {
 
     }
 
-    protected void checkAnswer(final View cmd) {
+    protected void checkAnswer() {
+
+
+    }
+
+    protected void showNextQuestion(final View cmd) {
 
         final Intent intent = new Intent(this, ShowCorrectAnswerActivity.class);
 
@@ -131,8 +210,8 @@ public class ShowQuestionsActivity extends Activity {
 
         // information to pass to another activity
         intent.putExtra(KEY_QUESTION, questionString);
-        intent.putExtra(KEY_ANSWERS, answersArrayString);
-        intent.putExtra(KEY_SOLUTIONS, solutionArrayBool);
+        //intent.putExtra(KEY_ANSWERS, answersArrayString);
+        // intent.putExtra(KEY_SOLUTIONS, solutionArrayBool);
         intent.putExtra(KEY_NUMBEROFQUESTIONS, questionsAnswered);
 
         startActivity(intent);

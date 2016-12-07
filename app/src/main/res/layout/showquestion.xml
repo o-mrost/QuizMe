@@ -61,4 +61,10 @@
             android:onClick="checkAnswer"/>
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextQuestion"
+        android:text="Show next question"
+        android:onClick="showNextQuestion"/>
 </LinearLayout>
