@@ -1,3 +1,7 @@
+/**
+ * Created by Max on 02.12.16.
+ */
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -6,7 +10,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var url = 'mongodb://localhost:27017/conFusion';
+var azureUrl = process.env.CONNECTION_STRING;
+var url = 'mongodb://localhost:27017/QuizApp';
+//mongoose.connect(azureUrl);
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -17,9 +23,7 @@ db.once('open', function () {
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var dishRouter = require('./routes/dishRouter');
-var promoRouter = require('./routes/promoRouter');
-var leaderRouter = require('./routes/leaderRouter');
+var networkRouter = require('./routes/networkRouter');
 
 var app = express();
 
@@ -39,9 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/dishes',dishRouter);
-app.use('/promotions',promoRouter);
-app.use('/leadership',leaderRouter);
+app.use('/networks',networkRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
