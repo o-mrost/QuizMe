@@ -11,10 +11,16 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var azureUrl = process.env.CONNECTION_STRING;
+<<<<<<< HEAD
 //var url = 'mongodb://localhost:27017/QuizApp';
 //var url = 'mongodb://quizappdata:SkbpGtmtCq2TdgffFb2I37UhjxQxJrnWwC1jLpLW4eLKd26VhTUorAPSdcXQypUEIEvmKMljMBgiK9SXTgbrVg==@quizappdata.documents.azure.com:10250/?ssl=true'
 mongoose.connect(azureUrl);
 //mongoose.connect(url);
+=======
+var url = 'mongodb://localhost:27017/QuizApp';
+//mongoose.connect(azureUrl);
+mongoose.connect(url);
+>>>>>>> 1e8797d133acd615c9a702306e2c5dee1e579e49
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
