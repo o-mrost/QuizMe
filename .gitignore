@@ -11,6 +11,10 @@
 
 # Created by https://www.gitignore.io/api/java,android,node
 
+### Webstorm ###
+# Built Webstorm files
+*.idea
+
 ### Android ###
 # Built application files
 *.apk
