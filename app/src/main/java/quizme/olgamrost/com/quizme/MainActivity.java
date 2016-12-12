@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     int numberOfQuestionsAnswered;
 
     public static final String KEY_NUMBEROFQUESTIONS = "questions";
-
-    // variable for debugging
+    
     public static final boolean DBG = true;
     private static final String CNAME = "MainActivity.";
 
