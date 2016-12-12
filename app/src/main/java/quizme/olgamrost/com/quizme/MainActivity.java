@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String KEY_NUMBEROFQUESTIONS = "questions";
 
-    // variable for debugging
+    // variable for debuggingjhjhjhj
     public static final boolean DBG = true;
     private static final String CNAME = "MainActivity.";
 

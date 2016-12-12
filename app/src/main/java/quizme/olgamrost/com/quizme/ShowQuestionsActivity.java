@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static android.R.attr.button;
+
 /**
  * Created by olgamrost on 04/12/2016.
  */
@@ -76,7 +78,11 @@ public class ShowQuestionsActivity extends Activity {
                     answer1.setBackgroundColor(Color.RED);
                 }
                 ;
-            }
+           answer2.setEnabled(false);
+                answer3.setEnabled(false);
+                answer4.setEnabled(false)
+           ; }
+
         });
 
         answer2.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +94,9 @@ public class ShowQuestionsActivity extends Activity {
                     answer2.setBackgroundColor(Color.RED);
                 }
                 ;
+                answer1.setEnabled(false);
+                answer3.setEnabled(false);
+                answer4.setEnabled(false);
             }
         });
 
@@ -100,6 +109,9 @@ public class ShowQuestionsActivity extends Activity {
                     answer3.setBackgroundColor(Color.RED);
                 }
                 ;
+                answer1.setEnabled(false);
+                answer2.setEnabled(false);
+                answer4.setEnabled(false);
             }
         });
 
@@ -112,6 +124,9 @@ public class ShowQuestionsActivity extends Activity {
                     answer4.setBackgroundColor(Color.RED);
                 }
                 ;
+                answer1.setEnabled(false);
+                answer2.setEnabled(false);
+                answer3.setEnabled(false);
             }
         });
 
