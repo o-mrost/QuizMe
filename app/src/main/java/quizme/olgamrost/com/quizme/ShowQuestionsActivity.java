@@ -44,11 +44,11 @@ public class ShowQuestionsActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.showquestion);
 
-        final Bundle extras = getIntent().getExtras();
-        questionsAnswered = extras.getInt(MainActivity.KEY_NUMBEROFQUESTIONS);
-        questionsAnswered++;
+        //final Bundle extras = getIntent().getExtras();
+        //questionsAnswered = extras.getInt(MainActivity.KEY_NUMBEROFQUESTIONS);
+        //questionsAnswered++;
 
-        Log.v("questions answered ", "" + questionsAnswered);
+       // Log.v("questions answered ", "" + questionsAnswered);
 
         question = (TextView) findViewById(R.id.question);
         questionNumber = (TextView) findViewById(R.id.questionNumber);
@@ -75,7 +75,6 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer1.setBackgroundColor(Color.RED);
                 }
-                ;
             }
         });
 
@@ -87,7 +86,6 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer2.setBackgroundColor(Color.RED);
                 }
-                ;
             }
         });
 
@@ -99,7 +97,6 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer3.setBackgroundColor(Color.RED);
                 }
-                ;
             }
         });
 
@@ -111,7 +108,6 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer4.setBackgroundColor(Color.RED);
                 }
-                ;
             }
         });
 
@@ -194,10 +190,6 @@ public class ShowQuestionsActivity extends Activity {
 
     }
 
-    protected void checkAnswer() {
-
-
-    }
 
     protected void showNextQuestion(final View cmd) {
 
@@ -212,7 +204,7 @@ public class ShowQuestionsActivity extends Activity {
         intent.putExtra(KEY_QUESTION, questionString);
         //intent.putExtra(KEY_ANSWERS, answersArrayString);
         // intent.putExtra(KEY_SOLUTIONS, solutionArrayBool);
-        intent.putExtra(KEY_NUMBEROFQUESTIONS, questionsAnswered);
+        //intent.putExtra(KEY_NUMBEROFQUESTIONS, questionsAnswered);
 
         startActivity(intent);
     }

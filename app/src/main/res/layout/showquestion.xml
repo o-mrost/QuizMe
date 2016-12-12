@@ -5,18 +5,18 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/questionNumber"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/questionNumber"/>
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/question"
-        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Question1"
         android:layout_gravity="center"
-        android:textSize="30dp"/>
+        android:layout_margin="20dp"
+        android:text="@string/Question1"
+        android:textSize="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,44 +27,41 @@
             android:id="@+id/answer1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/Answer1"
             android:layout_weight="1"
-            android:onClick="checkAnswer"/>
+            android:text="@string/Answer1" />
 
         <Button
             android:id="@+id/answer2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/Answer2"
             android:layout_weight="1"
-            android:onClick="checkAnswer"/>
+            android:text="@string/Answer2" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/answer3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/Answer3"
             android:layout_weight="1"
-            android:onClick="checkAnswer"/>
+            android:text="@string/Answer3" />
 
         <Button
             android:id="@+id/answer4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/Answer4"
             android:layout_weight="1"
-            android:onClick="checkAnswer"/>
+            android:text="@string/Answer4" />
     </LinearLayout>
 
     <Button
+        android:id="@+id/nextQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nextQuestion"
-        android:text="Show next question"
-        android:onClick="showNextQuestion"/>
+        android:onClick="showNextQuestion"
+        android:text="Show next question" />
 </LinearLayout>
