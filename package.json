@@ -1,4 +1,7 @@
 {
+ "engines": {
+    "node": "6.9.2"
+ }, 
   "name": "rest-server",
   "version": "0.0.0",
   "private": true,
