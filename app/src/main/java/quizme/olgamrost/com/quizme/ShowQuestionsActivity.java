@@ -31,7 +31,6 @@ public class ShowQuestionsActivity extends Activity {
 
     String questionString, answerString, answerString1, answerString2, answerString3;
 
-    Boolean[] solutionArrayBool;
     Boolean answerBool, answerBool1, answerBool2, answerBool3;
     TextView question, questionNumber;
     Button answer1, answer2, answer3, answer4;
@@ -88,12 +87,6 @@ public class ShowQuestionsActivity extends Activity {
 
         super.onCreate(bundle);
         setContentView(R.layout.showquestion);
-
-        final Bundle extras = getIntent().getExtras();
-        questionsAnswered = extras.getInt(MainActivity.KEY_NUMBEROFQUESTIONS);
-        questionsAnswered++;
-
-        Log.v("questions answered ", "" + questionsAnswered);
 
         question = (TextView) findViewById(R.id.question);
         questionNumber = (TextView) findViewById(R.id.questionNumber);
@@ -156,14 +149,14 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer1.setBackgroundColor(Color.RED);
                 }
-                ;
+
                 answer2.setEnabled(false);
                 answer3.setEnabled(false);
-                answer4.setEnabled(false)
-                ;
+                answer4.setEnabled(false);
             }
 
         });
+
 
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,7 +166,7 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer2.setBackgroundColor(Color.RED);
                 }
-                ;
+
                 answer1.setEnabled(false);
                 answer3.setEnabled(false);
                 answer4.setEnabled(false);
@@ -188,7 +181,6 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer3.setBackgroundColor(Color.RED);
                 }
-                ;
                 answer1.setEnabled(false);
                 answer2.setEnabled(false);
                 answer4.setEnabled(false);
@@ -203,7 +195,6 @@ public class ShowQuestionsActivity extends Activity {
                 } else {
                     answer4.setBackgroundColor(Color.RED);
                 }
-                ;
                 answer1.setEnabled(false);
                 answer2.setEnabled(false);
                 answer3.setEnabled(false);
@@ -265,22 +256,6 @@ public class ShowQuestionsActivity extends Activity {
             Log.v("--- answerString3 ---", answerString3);
 
 
-//            answersArrayString = new String[answerArray.length()];
-//            solutionArrayBool = new Boolean[answerArray.length()];
-//
-//            for (int i = 0; i < answerArray.length(); i++) {
-//
-//                JSONObject answerObject = answerArray.getJSONObject(i);
-//
-//                String answer = answerObject.getString("answer");
-//                Log.v("__ answer" + i + " __", answer);
-//                answersArrayString[i] = answer;
-//
-//                Boolean solution = answerObject.getBoolean("solution");
-//                Log.v("__ solution __ ", solution.toString());
-//                solutionArrayBool[i] = solution;
-//            }
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -289,10 +264,6 @@ public class ShowQuestionsActivity extends Activity {
 
     }
 
-    protected void checkAnswer() {
-
-
-    }
 
     protected void showNextQuestion(final View cmd) {
 
@@ -307,7 +278,7 @@ public class ShowQuestionsActivity extends Activity {
         intent.putExtra(KEY_QUESTION, questionString);
         //intent.putExtra(KEY_ANSWERS, answersArrayString);
         // intent.putExtra(KEY_SOLUTIONS, solutionArrayBool);
-        intent.putExtra(KEY_NUMBEROFQUESTIONS, questionsAnswered);
+        //intent.putExtra(KEY_NUMBEROFQUESTIONS, questionsAnswered);
 
         startActivity(intent);
     }

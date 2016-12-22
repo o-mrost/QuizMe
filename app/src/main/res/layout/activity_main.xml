@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:text="@string/Quiz4"
             android:layout_weight="1"
-            android:onClick="showQuestion"/>
+            android:onClick="showManyQuestions"/>
 
     </LinearLayout>
 </LinearLayout>
