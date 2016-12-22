@@ -13,7 +13,11 @@
 
 ### Webstorm ###
 # Built Webstorm files
-*.idea
+.idea
+
+# Gradle:
+.idea/gradle.xml
+.idea/libraries
 
 ### Android ###
 # Built application files
