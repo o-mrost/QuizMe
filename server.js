@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 
 var azureUrl = process.env.CONNECTION_STRING;
 //var url = 'mongodb://localhost:27017/QuizApp';
-//var url = 'mongodb://quizappdata:SkbpGtmtCq2TdgffFb2I37UhjxQxJrnWwC1jLpLW4eLKd26VhTUorAPSdcXQypUEIEvmKMljMBgiK9SXTgbrVg==@quizappdata.documents.azure.com:10250/?ssl=true'
+//var url = 'mongodb://quizzappdb:dg93krkdqV5hKx5xkcv0sOICL6k3hoDsvZXjaQQZXyABs7BJpkuasf3HmRsqUSczokdyy0MFWLzkgjhyQY1Osw==@quizzappdb.documents.azure.com:10250/?ssl=true'
 mongoose.connect(azureUrl);
 //mongoose.connect(url);
 var db = mongoose.connection;
