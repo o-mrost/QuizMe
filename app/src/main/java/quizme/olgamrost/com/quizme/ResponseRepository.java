@@ -1,11 +1,7 @@
 package quizme.olgamrost.com.quizme;
 
-import android.content.Intent;
 import android.content.res.AssetManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,60 +14,23 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by olgamrost on 20/12/2016.
+ */
 
-    int numberOfQuestionsAnswered;
+public class ResponseRepository {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    private AssetManager assetManager;
 
-        numberOfQuestionsAnswered = 0;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public ResponseRepository(AssetManager assetManager)
+    {
+        this.assetManager = assetManager;
     }
 
-    public void showRepoQuestions(final View cmd){
+    public List<Response> GetResponses() {
 
-        final Intent intent = new Intent(this, ShowRepoQuestionsActivity.class);
-        intent.putExtra("number", numberOfQuestionsAnswered);
-        startActivity(intent);
-    }
-
-    public void showQuestion (final View cmd){
-
-        final Intent intent = new Intent(this, ShowQuestionsActivity.class);
-        startActivity(intent);
-    }
-
-    public void showManyQuestions (final View cmd){
-
-        List<Response> list = deserealiseJsonWithSeveralQuestions();
-
-        // how to put responces in intent???
-
-
-        Response questionAndAnswers = list.get(numberOfQuestionsAnswered);
-
-        numberOfQuestionsAnswered++;
-
-        Intent intent = new Intent(this, ShowManyQuestionsActivity.class);
-
-       // intent.putExtra("quiz", list);
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("question", questionAndAnswers);
-     //   bundle.putSerializable("quiz", list);
-        intent.putExtras(bundle);
-        intent.putExtra("numberOfQuestionsAnswered", numberOfQuestionsAnswered);
-
-        startActivity(intent);
-    }
-
-    private List<Response> deserealiseJsonWithSeveralQuestions() {
-
-        AssetManager am = getAssets();
         try {
-            InputStream is = am.open("twoJsons.txt");
+            InputStream is = assetManager.open("twoJsons.txt");
 
             BufferedReader bR = new BufferedReader(new InputStreamReader(is));
             String line = "";
@@ -114,5 +73,21 @@ public class MainActivity extends AppCompatActivity {
             //  e.printStackTrace();
         }
         return null;
+    }
+
+    public Response GetNext(Response response)
+    {
+        List<Response> list = GetResponses();
+        Response nextResponse = null;
+        for (int j = 0; j< list.size(); j++)
+        {
+            Response currentResp = list.get(j);
+            if (currentResp.get_id().equals(response.get_id()))
+            {
+                //current question index of list is in j
+                nextResponse = list.get(j+1);
+            }
+        }
+        return nextResponse;
     }
 }

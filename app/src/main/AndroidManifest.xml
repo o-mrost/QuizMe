@@ -29,6 +29,19 @@
             android:label="@string/app_name">
         </activity>
 
+        <activity
+            android:name=".ShowRepoQuestionsActivity"
+            android:label="@string/app_name">
+        </activity>
+
+        <activity
+            android:name=".FinalActivity"
+            android:label="@string/app_name">
+        </activity>
+
+
+        ShowRepoQuestionsActivity
+
     </application>
 
 </manifest>
