@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "engines": {
-    "node": "6.9.2"
+    "node": "6.9.1"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
