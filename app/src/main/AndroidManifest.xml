@@ -8,39 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShowQuestionsActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:name=".Activities.ShowQuizActivity"
+            android:label="@string/app_name"></activity>
         <activity
-            android:name=".ShowCorrectAnswerActivity"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".ShowManyQuestionsActivity"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".ShowRepoQuestionsActivity"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity
-            android:name=".FinalActivity"
-            android:label="@string/app_name">
-        </activity>
-
-
-        ShowRepoQuestionsActivity
+            android:name=".Activities.FinalActivity"
+            android:label="@string/app_name"></activity>
 
     </application>
 

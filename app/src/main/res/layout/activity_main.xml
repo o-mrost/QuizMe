@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="quizme.olgamrost.com.quizme.MainActivity">
+    tools:context="quizme.olgamrost.com.quizme.Activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:text="@string/Quiz1"
             android:layout_weight="1"
-            android:onClick="showQuestion"/>
+            android:onClick="showQuestions"/>
 
         <Button
             android:id="@+id/Quiz2"
@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:text="@string/Quiz2"
             android:layout_weight="1"
-            android:onClick="showQuestion"/>
+            android:onClick="showQuestions"/>
 
     </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:text="@string/Quiz3"
             android:layout_weight="1"
-            android:onClick="showRepoQuestions"/>
+            android:onClick="showQuestions"/>
 
         <Button
             android:id="@+id/Quiz4"
@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:text="@string/Quiz4"
             android:layout_weight="1"
-            android:onClick="showManyQuestions"/>
+            android:onClick="showQuestions"/>
 
     </LinearLayout>
 </LinearLayout>

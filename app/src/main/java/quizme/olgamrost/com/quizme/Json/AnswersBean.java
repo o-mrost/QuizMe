@@ -1,13 +1,11 @@
-package quizme.olgamrost.com.quizme;
-
-import java.io.Serializable;
+package quizme.olgamrost.com.quizme.Json;
 
 /**
  * Created by olgamrost on 20/12/2016.
  */
 
 
-    public  class AnswersBean implements Serializable{
+    public  class AnswersBean {
         /**
          * answer : Transport Layer
          * solution : true
