@@ -1,3 +1,18 @@
 <resources>
+
+
     <string name="app_name">QuizMe</string>
+    <string name="Quiz1">Start a quiz</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="Question1">How much will be 2 + 2 ?</string>
+    <string name="Answer1">Are you kidding me?</string>
+    <string name="Answer2">Math was such a long time ago!</string>
+    <string name="Answer3">I guess, it is 4, but I am not sure</string>
+    <string name="Answer4">Can I have another question please?</string>
+    <string name="showNextQuestion">Show next question</string>
+
 </resources>

@@ -1,4 +1,4 @@
-package quizme.olgamrost.com.quizme;
+package quiz.olgamrost.com.quiz;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("quizme.olgamrost.com.quizme", appContext.getPackageName());
+        assertEquals("quiz.olgamrost.com.quiz", appContext.getPackageName());
     }
 }

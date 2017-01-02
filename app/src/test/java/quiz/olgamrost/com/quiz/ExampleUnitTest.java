@@ -1,4 +1,4 @@
-package quizme.olgamrost.com.quizme;
+package quiz.olgamrost.com.quiz;
 
 import org.junit.Test;
 
