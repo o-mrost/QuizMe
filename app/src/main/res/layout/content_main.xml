@@ -30,7 +30,6 @@
         android:textColor="@color/light"
         android:background="@drawable/gradient"
         android:text="@string/Quiz1"
-
         android:onClick="showQuestions" />
 
 </LinearLayout>
