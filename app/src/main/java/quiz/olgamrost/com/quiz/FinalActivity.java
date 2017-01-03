@@ -3,6 +3,7 @@ package quiz.olgamrost.com.quiz;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -28,5 +29,12 @@ public class FinalActivity extends Activity {
 
         correctAnswers.setText("You answered correctly " + (int) correctAnswersInt + " questions");
         totalResult.setText("Your score is " + score + "%");
+    }
+
+    public void goBackClicked(final View v){
+
+        final Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 }

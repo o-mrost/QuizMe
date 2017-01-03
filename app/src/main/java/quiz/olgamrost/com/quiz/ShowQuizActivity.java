@@ -48,7 +48,7 @@ public class ShowQuizActivity extends AppCompatActivity {
         if (filePath == null) {
             filePath = "firstQuiz.txt";
         }
-        
+
         ResponseRepository repo = new ResponseRepository(getAssets());
         List<Response> list = repo.GetResponses(filePath);
         totalQuestions = list.size();
@@ -209,6 +209,7 @@ public class ShowQuizActivity extends AppCompatActivity {
             final Intent intent = new Intent(this, ShowQuizActivity.class);
             intent.putExtra("number", numberOfQuestionsAnswered);
             intent.putExtra("correctAnswers", correctAnswers);
+            intent.putExtra("file", filePath);
             startActivity(intent);
         } else {
             final Intent intent = new Intent(this, FinalActivity.class);

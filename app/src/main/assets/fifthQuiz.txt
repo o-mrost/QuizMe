@@ -2,22 +2,22 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "Fifth quiz. First question",
+	"question": "Umfrage",
 	"__v": 4,
 	"answers": [{
-		"answer": "Transport Layer",
+		"answer": "die",
 		"solution": true,
 		"_id": "5844744155b10b3d26489773"
 	}, {
-		"answer": "Session Layer",
+		"answer": "der",
 		"solution": false,
 		"_id": "5844749955b10b3d26489774"
 	}, {
-		"answer": "Network Layer",
+		"answer": "das",
 		"solution": false,
 		"_id": "5844749f55b10b3d26489775"
 	}, {
-		"answer": "Presentation Layer",
+		"answer": " ",
 		"solution": false,
 		"_id": "584474e555b10b3d26489776"
 	}],
@@ -26,22 +26,22 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "Second question",
+	"question": "Nektarine",
 	"__v": 4,
 	"answers": [{
-		"answer": "some answer",
+		"answer": "der",
 		"solution": false,
 		"_id": "5844744155b10b3d26489773"
 	}, {
-		"answer": "correct answer",
+		"answer": "die",
 		"solution": true,
 		"_id": "5844749955b10b3d26489774"
 	}, {
-		"answer": "third answer",
+		"answer": "das",
 		"solution": false,
 		"_id": "5844749f55b10b3d26489775"
 	}, {
-		"answer": "fourth answer",
+		"answer": "",
 		"solution": false,
 		"_id": "584474e555b10b3d26489776"
 	}],
@@ -50,22 +50,22 @@
    	"_id": "58446e0c37b3113b6b024be4",
    	"updatedAt": "2016-12-04T19:56:21.420Z",
    	"createdAt": "2016-12-04T19:27:08.914Z",
-   	"question": "Third question",
+   	"question": "Zeitunterschied",
    	"__v": 4,
    	"answers": [{
-   		"answer": "some answer",
+   		"answer": "die",
    		"solution": false,
    		"_id": "5844744155b10b3d26489773"
    	}, {
-   		"answer": "correct answer",
+   		"answer": "der",
    		"solution": true,
    		"_id": "5844749955b10b3d26489774"
    	}, {
-   		"answer": "third answer",
+   		"answer": "das",
    		"solution": false,
    		"_id": "5844749f55b10b3d26489775"
    	}, {
-   		"answer": "fourth answer",
+   		"answer": "",
    		"solution": false,
    		"_id": "584474e555b10b3d26489776"
    	}],
@@ -75,18 +75,18 @@
       	"_id": "58446e0c37b3113b6b024be4",
       	"updatedAt": "2016-12-04T19:56:21.420Z",
       	"createdAt": "2016-12-04T19:27:08.914Z",
-      	"question": "Fourth question",
+      	"question": "Konsequenz",
       	"__v": 4,
       	"answers": [{
-      		"answer": "some answer",
+      		"answer": "der",
       		"solution": false,
       		"_id": "5844744155b10b3d26489773"
       	}, {
-      		"answer": "correct answer",
+      		"answer": "die",
       		"solution": true,
       		"_id": "5844749955b10b3d26489774"
       	}, {
-      		"answer": "third answer",
+      		"answer": "das",
       		"solution": false,
       		"_id": "5844749f55b10b3d26489775"
       	}, {
