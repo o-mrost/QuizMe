@@ -1,0 +1,99 @@
+[{
+	"_id": "58446e0c37b3113b6b024be4",
+	"updatedAt": "2016-12-04T19:56:21.420Z",
+	"createdAt": "2016-12-04T19:27:08.914Z",
+	"question": "Second quiz. First question",
+	"__v": 4,
+	"answers": [{
+		"answer": "Transport Layer",
+		"solution": true,
+		"_id": "5844744155b10b3d26489773"
+	}, {
+		"answer": "Session Layer",
+		"solution": false,
+		"_id": "5844749955b10b3d26489774"
+	}, {
+		"answer": "Network Layer",
+		"solution": false,
+		"_id": "5844749f55b10b3d26489775"
+	}, {
+		"answer": "Presentation Layer",
+		"solution": false,
+		"_id": "584474e555b10b3d26489776"
+	}],
+	"category": "Information technology"
+}, {
+	"_id": "58446e0c37b3113b6b024be4",
+	"updatedAt": "2016-12-04T19:56:21.420Z",
+	"createdAt": "2016-12-04T19:27:08.914Z",
+	"question": "Second question",
+	"__v": 4,
+	"answers": [{
+		"answer": "some answer",
+		"solution": false,
+		"_id": "5844744155b10b3d26489773"
+	}, {
+		"answer": "correct answer",
+		"solution": true,
+		"_id": "5844749955b10b3d26489774"
+	}, {
+		"answer": "third answer",
+		"solution": false,
+		"_id": "5844749f55b10b3d26489775"
+	}, {
+		"answer": "fourth answer",
+		"solution": false,
+		"_id": "584474e555b10b3d26489776"
+	}],
+	"category": "Information technology"
+}, {
+   	"_id": "58446e0c37b3113b6b024be4",
+   	"updatedAt": "2016-12-04T19:56:21.420Z",
+   	"createdAt": "2016-12-04T19:27:08.914Z",
+   	"question": "Third question",
+   	"__v": 4,
+   	"answers": [{
+   		"answer": "some answer",
+   		"solution": false,
+   		"_id": "5844744155b10b3d26489773"
+   	}, {
+   		"answer": "correct answer",
+   		"solution": true,
+   		"_id": "5844749955b10b3d26489774"
+   	}, {
+   		"answer": "third answer",
+   		"solution": false,
+   		"_id": "5844749f55b10b3d26489775"
+   	}, {
+   		"answer": "fourth answer",
+   		"solution": false,
+   		"_id": "584474e555b10b3d26489776"
+   	}],
+   	"category": "Information technology"
+   }
+   , {
+      	"_id": "58446e0c37b3113b6b024be4",
+      	"updatedAt": "2016-12-04T19:56:21.420Z",
+      	"createdAt": "2016-12-04T19:27:08.914Z",
+      	"question": "Fourth question",
+      	"__v": 4,
+      	"answers": [{
+      		"answer": "some answer",
+      		"solution": false,
+      		"_id": "5844744155b10b3d26489773"
+      	}, {
+      		"answer": "correct answer",
+      		"solution": true,
+      		"_id": "5844749955b10b3d26489774"
+      	}, {
+      		"answer": "third answer",
+      		"solution": false,
+      		"_id": "5844749f55b10b3d26489775"
+      	}, {
+      		"answer": "fourth answer",
+      		"solution": false,
+      		"_id": "584474e555b10b3d26489776"
+      	}],
+      	"category": "Information technology"
+      }
+]

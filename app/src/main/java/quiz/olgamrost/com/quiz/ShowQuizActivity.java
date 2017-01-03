@@ -24,7 +24,7 @@ public class ShowQuizActivity extends AppCompatActivity {
     Button answer1, answer2, answer3, answer4;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
     Boolean solution1, solution2, solution3, solution4;
-    String questionString;
+    String questionString, filePath;
     MediaPlayer mp1 = null, mp2 = null;
 
 
@@ -42,9 +42,10 @@ public class ShowQuizActivity extends AppCompatActivity {
         Intent intent = getIntent();
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
         correctAnswers = intent.getIntExtra("correctAnswers", 0);
+        filePath = intent.getStringExtra("file");
 
         ResponseRepository repo = new ResponseRepository(getAssets());
-        List<Response> list = repo.GetResponses();
+        List<Response> list = repo.GetResponses(filePath);
         totalQuestions = list.size();
 
         Response currentResponse = list.get(numberOfQuestionsAnswered);

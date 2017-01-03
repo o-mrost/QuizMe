@@ -29,10 +29,11 @@ public class ResponseRepository {
         this.assetManager = assetManager;
     }
 
-    public List<Response> GetResponses() {
+    public List<Response> GetResponses(String fileAddress) {
+
 
         try {
-            InputStream is = assetManager.open("twoJsons.txt");
+            InputStream is = assetManager.open(fileAddress);
             BufferedReader bR = new BufferedReader(new InputStreamReader(is));
             String line = "";
             StringBuilder responseStrBuilder = new StringBuilder();
