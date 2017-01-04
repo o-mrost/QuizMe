@@ -1,10 +1,9 @@
 package quiz.olgamrost.com.quiz;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,14 +15,18 @@ import java.util.Random;
 import quiz.olgamrost.com.quiz.Json.AnswersBean;
 import quiz.olgamrost.com.quiz.Json.Response;
 
+import static quiz.olgamrost.com.quiz.R.drawable.correct;
+import static quiz.olgamrost.com.quiz.R.drawable.wrong;
+
 public class ShowThreeAnswersQuiz extends Activity {
 
     TextView question;
     Button answer1, answer2, answer3;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
-    Boolean solution1, solution2, solution3, solution4;
+    Boolean solution1, solution2, solution3;
     String questionString, filePath;
-    MediaPlayer mp1 = null, mp2 = null;
+    MediaPlayer wrongSound = null, correctSound = null;
+    ArrayList<AnswerSolution> newlist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,7 @@ public class ShowThreeAnswersQuiz extends Activity {
         Intent intent = getIntent();
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
         correctAnswers = intent.getIntExtra("correctAnswers", 0);
-
         filePath = intent.getStringExtra("file");
-
-        if (filePath == null) {
-            filePath = "firstQuiz.txt";
-        }
 
         ResponseRepository repo = new ResponseRepository(getAssets());
         List<Response> list = repo.GetResponses(filePath);
@@ -55,8 +53,8 @@ public class ShowThreeAnswersQuiz extends Activity {
 
         question.setText(String.valueOf(numberOfQuestionsAnswered + 1) + ". " + questionString);
 
-        mp1 = new MediaPlayer().create(this, R.raw.wrong);
-        mp2 = new MediaPlayer().create(this, R.raw.correct);
+        wrongSound = new MediaPlayer().create(this, R.raw.wrong);
+        correctSound = new MediaPlayer().create(this, R.raw.correct);
 
         randomizeAnswers(answers);
 
@@ -65,7 +63,19 @@ public class ShowThreeAnswersQuiz extends Activity {
         numberOfQuestionsAnswered++;
     }
 
+    private void showCorrectAnswer() {
+
+        if (solution1 == true) {
+            answer1.setBackgroundResource(correct);
+        } else if (solution2 == true) {
+            answer2.setBackgroundResource(correct);
+        } else if (solution3 == true) {
+            answer3.setBackgroundResource(correct);
+        }
+    }
+
     private void randomizeAnswers(List<AnswersBean> answers) {
+
         AnswerSolution first = new AnswerSolution();
         String answer1String = answers.get(0).getAnswer();
         solution1 = answers.get(0).isSolution();
@@ -84,8 +94,7 @@ public class ShowThreeAnswersQuiz extends Activity {
         third.setAnswer(answer3String);
         third.setSolution(solution3);
 
-
-        ArrayList<AnswerSolution> newlist = new ArrayList<>(4);
+        newlist = new ArrayList<>(4);
         newlist.add(first);
         newlist.add(second);
         newlist.add(third);
@@ -111,43 +120,45 @@ public class ShowThreeAnswersQuiz extends Activity {
             answer3.setText(newlist.get(i3).getAnswer());
             solution3 = newlist.get(i3).isSolution();
             newlist.remove(newlist.get(i3));
-
         }
     }
 
     private void disableOtherButtons() {
+
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (solution1 == true) {
-                    answer1.setBackgroundColor(Color.GREEN);
+                    answer1.setBackgroundResource(correct);
                     correctAnswers++;
-                    mp2.start();
+                    correctSound.start();
                 } else {
-                    answer1.setBackgroundColor(Color.RED);
-                    mp1.start();
+                    answer1.setBackgroundResource(wrong);
+                    wrongSound.start();
                 }
-
                 answer2.setEnabled(false);
                 answer3.setEnabled(false);
-            }
 
+                showCorrectAnswer();
+            }
         });
 
         answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (solution2 == true) {
-                    answer2.setBackgroundColor(Color.GREEN);
+                    answer2.setBackgroundResource(correct);
                     correctAnswers++;
-                    mp2.start();
+                    correctSound.start();
                 } else {
-                    answer2.setBackgroundColor(Color.RED);
-                    mp1.start();
+                    answer2.setBackgroundResource(wrong);
+                    wrongSound.start();
                 }
-
                 answer1.setEnabled(false);
                 answer3.setEnabled(false);
+
+                showCorrectAnswer();
+
             }
         });
 
@@ -155,15 +166,17 @@ public class ShowThreeAnswersQuiz extends Activity {
             @Override
             public void onClick(View v) {
                 if (solution3 == true) {
-                    answer3.setBackgroundColor(Color.GREEN);
+                    answer3.setBackgroundResource(correct);
                     correctAnswers++;
-                    mp2.start();
+                    correctSound.start();
                 } else {
-                    answer3.setBackgroundColor(Color.RED);
-                    mp1.start();
+                    answer3.setBackgroundResource(wrong);
+                    wrongSound.start();
                 }
                 answer1.setEnabled(false);
                 answer2.setEnabled(false);
+
+                showCorrectAnswer();
             }
         });
 
@@ -185,5 +198,4 @@ public class ShowThreeAnswersQuiz extends Activity {
             startActivity(intent);
         }
     }
-
 }

@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Congratulations!"
+        android:text="@string/congratulations"
         android:textSize="40dp"
         android:layout_margin="10dp"/>
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:layout_margin="10dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center_horizontal"/>
 
     <TextView
         android:id="@+id/totalResult"
@@ -26,13 +26,15 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:layout_margin="20dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center_horizontal"/>
 
     <Button
         android:id="@+id/backLastButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back"
+        android:textColor="@color/light"
+        android:background="@drawable/gradient"
         android:onClick="goBackClicked"/>
 
 </LinearLayout>

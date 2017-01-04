@@ -17,6 +17,9 @@ import java.util.Random;
 import quiz.olgamrost.com.quiz.Json.AnswersBean;
 import quiz.olgamrost.com.quiz.Json.Response;
 
+import static quiz.olgamrost.com.quiz.R.drawable.correct;
+import static quiz.olgamrost.com.quiz.R.drawable.wrong;
+
 
 public class ShowQuizActivity extends AppCompatActivity {
 
@@ -135,17 +138,18 @@ public class ShowQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (solution1 == true) {
-                    answer1.setBackgroundColor(Color.GREEN);
+                    answer1.setBackgroundResource(correct);
                     correctAnswers++;
                     mp2.start();
                 } else {
-                    answer1.setBackgroundColor(Color.RED);
+                    answer1.setBackgroundResource(wrong);
                     mp1.start();
                 }
 
                 answer2.setEnabled(false);
                 answer3.setEnabled(false);
                 answer4.setEnabled(false);
+                showCorrectAnswer();
             }
 
         });
@@ -154,17 +158,18 @@ public class ShowQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (solution2 == true) {
-                    answer2.setBackgroundColor(Color.GREEN);
+                    answer2.setBackgroundResource(correct);
                     correctAnswers++;
                     mp2.start();
                 } else {
-                    answer2.setBackgroundColor(Color.RED);
+                    answer2.setBackgroundResource(wrong);
                     mp1.start();
                 }
 
                 answer1.setEnabled(false);
                 answer3.setEnabled(false);
                 answer4.setEnabled(false);
+                showCorrectAnswer();
             }
         });
 
@@ -172,16 +177,17 @@ public class ShowQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (solution3 == true) {
-                    answer3.setBackgroundColor(Color.GREEN);
+                    answer3.setBackgroundResource(correct);
                     correctAnswers++;
                     mp2.start();
                 } else {
-                    answer3.setBackgroundColor(Color.RED);
+                    answer3.setBackgroundResource(wrong);
                     mp1.start();
                 }
                 answer1.setEnabled(false);
                 answer2.setEnabled(false);
                 answer4.setEnabled(false);
+                showCorrectAnswer();
             }
         });
 
@@ -189,18 +195,32 @@ public class ShowQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (solution4 == true) {
-                    answer4.setBackgroundColor(Color.GREEN);
+                    answer4.setBackgroundResource(correct);
                     correctAnswers++;
                     mp2.start();
                 } else {
-                    answer4.setBackgroundColor(Color.RED);
+                    answer4.setBackgroundResource(wrong);
                     mp1.start();
                 }
                 answer1.setEnabled(false);
                 answer2.setEnabled(false);
                 answer3.setEnabled(false);
+                showCorrectAnswer();
             }
         });
+    }
+
+    private void showCorrectAnswer() {
+
+        if (solution1 == true) {
+            answer1.setBackgroundResource(correct);
+        } else if (solution2 == true) {
+            answer2.setBackgroundResource(correct);
+        } else if (solution3 == true) {
+            answer3.setBackgroundResource(correct);
+        } else if (solution4 == true) {
+            answer4.setBackgroundResource(correct);
+        }
     }
 
     protected void showNextQuestion(View v) {
