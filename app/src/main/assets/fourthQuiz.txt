@@ -2,22 +2,22 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "Fourth quiz. First question",
+	"question": "Luanda is capital of which country?",
 	"__v": 4,
 	"answers": [{
-		"answer": "Transport Layer",
+		"answer": "Angola",
 		"solution": true,
 		"_id": "5844744155b10b3d26489773"
 	}, {
-		"answer": "Session Layer",
+		"answer": "Malawi",
 		"solution": false,
 		"_id": "5844749955b10b3d26489774"
 	}, {
-		"answer": "Network Layer",
+		"answer": "Mongolia",
 		"solution": false,
 		"_id": "5844749f55b10b3d26489775"
 	}, {
-		"answer": "Presentation Layer",
+		"answer": "Nikaragua",
 		"solution": false,
 		"_id": "584474e555b10b3d26489776"
 	}],
@@ -26,22 +26,22 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "Second question",
+	"question": "Gaborone is capital of which country?",
 	"__v": 4,
 	"answers": [{
-		"answer": "some answer",
+		"answer": "Oman",
 		"solution": false,
 		"_id": "5844744155b10b3d26489773"
 	}, {
-		"answer": "correct answer",
+		"answer": "Botswana",
 		"solution": true,
 		"_id": "5844749955b10b3d26489774"
 	}, {
-		"answer": "third answer",
+		"answer": "Dominica",
 		"solution": false,
 		"_id": "5844749f55b10b3d26489775"
 	}, {
-		"answer": "fourth answer",
+		"answer": "Samoa",
 		"solution": false,
 		"_id": "584474e555b10b3d26489776"
 	}],
@@ -50,50 +50,73 @@
    	"_id": "58446e0c37b3113b6b024be4",
    	"updatedAt": "2016-12-04T19:56:21.420Z",
    	"createdAt": "2016-12-04T19:27:08.914Z",
-   	"question": "Third question",
+   	"question": "Dakar is capital of which country?",
    	"__v": 4,
    	"answers": [{
-   		"answer": "some answer",
+   		"answer": "Guinea",
    		"solution": false,
    		"_id": "5844744155b10b3d26489773"
    	}, {
-   		"answer": "correct answer",
+   		"answer": "Senegal",
    		"solution": true,
    		"_id": "5844749955b10b3d26489774"
    	}, {
-   		"answer": "third answer",
+   		"answer": "Uganda",
    		"solution": false,
    		"_id": "5844749f55b10b3d26489775"
    	}, {
-   		"answer": "fourth answer",
+   		"answer": "Lesotho",
    		"solution": false,
    		"_id": "584474e555b10b3d26489776"
    	}],
    	"category": "Information technology"
-   }
-   , {
+   }, {
       	"_id": "58446e0c37b3113b6b024be4",
       	"updatedAt": "2016-12-04T19:56:21.420Z",
       	"createdAt": "2016-12-04T19:27:08.914Z",
-      	"question": "Fourth question",
+      	"question": "Hanoi is capital of which country?",
       	"__v": 4,
       	"answers": [{
-      		"answer": "some answer",
+      		"answer": "Liberia",
       		"solution": false,
       		"_id": "5844744155b10b3d26489773"
       	}, {
-      		"answer": "correct answer",
+      		"answer": "Vietnam",
       		"solution": true,
       		"_id": "5844749955b10b3d26489774"
       	}, {
-      		"answer": "third answer",
+      		"answer": "Honduras",
       		"solution": false,
       		"_id": "5844749f55b10b3d26489775"
       	}, {
-      		"answer": "fourth answer",
+      		"answer": "Singapore",
       		"solution": false,
       		"_id": "584474e555b10b3d26489776"
       	}],
       	"category": "Information technology"
-      }
+    }, {
+           	"_id": "58446e0c37b3113b6b024be4",
+               	"updatedAt": "2016-12-04T19:56:21.420Z",
+               	"createdAt": "2016-12-04T19:27:08.914Z",
+               	"question": "Suva is capital of which country?",
+               	"__v": 4,
+               	"answers": [{
+               		"answer": "Equatorial Guinea",
+               		"solution": false,
+               		"_id": "5844744155b10b3d26489773"
+               	}, {
+               		"answer": "Fiji",
+               		"solution": true,
+               		"_id": "5844749955b10b3d26489774"
+               	}, {
+               		"answer": "Djibouti",
+               		"solution": false,
+               		"_id": "5844749f55b10b3d26489775"
+               	}, {
+               		"answer": "Seychelles",
+               		"solution": false,
+               		"_id": "584474e555b10b3d26489776"
+               	}],
+               	"category": "Information technology"
+               }
 ]

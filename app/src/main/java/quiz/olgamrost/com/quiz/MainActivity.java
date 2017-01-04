@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity
             showQuestions(getCurrentFocus());
         } else if (id == R.id.fifth_quiz) {
             fileAddress = "fifthQuiz.txt";
-            showQuestions(getCurrentFocus());
+            showThreeAnswerQuiz(getCurrentFocus());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -120,6 +120,16 @@ public class MainActivity extends AppCompatActivity
     public void showQuestions(final View cmd) {
 
         final Intent intent = new Intent(this, ShowQuizActivity.class);
+        intent.putExtra("number", numberOfQuestionsAnswered);
+        intent.putExtra("correctAnswers", numberOfCorrectAnswers);
+        intent.putExtra("file", fileAddress);
+        startActivity(intent);
+
+    }
+
+    public void showThreeAnswerQuiz(final View cmd) {
+
+        final Intent intent = new Intent(this, ShowThreeAnswersQuiz.class);
         intent.putExtra("number", numberOfQuestionsAnswered);
         intent.putExtra("correctAnswers", numberOfCorrectAnswers);
         intent.putExtra("file", fileAddress);

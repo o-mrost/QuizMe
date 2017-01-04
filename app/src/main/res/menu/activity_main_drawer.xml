@@ -6,7 +6,7 @@
             <item
                 android:id="@+id/first_quiz"
                 android:icon="@drawable/ic_menu_share"
-                android:title="First quiz" />
+                android:title="OSI model" />
             <item
                 android:id="@+id/second_quiz"
                 android:icon="@drawable/ic_menu_send"
@@ -18,11 +18,11 @@
             <item
                 android:id="@+id/fourth_quiz"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="Another quiz" />
+                android:title="Countries and capitals" />
             <item
                 android:id="@+id/fifth_quiz"
                 android:icon="@drawable/ic_menu_slideshow"
-                android:title="One more quiz" />
+                android:title="Der, die, das" />
         </menu>
     </item>
 

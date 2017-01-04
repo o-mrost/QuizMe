@@ -29,7 +29,10 @@
             android:label="@string/title_activity_show_help" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".ShowThreeAnswersQuiz"
+            android:label="@string/title_activity_show_three_answers_quiz"></activity>
     </application>
 
 </manifest>
