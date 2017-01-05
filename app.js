@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+//connection to DB
 var azureUrl = process.env.CONNECTION_STRING;
 var url = 'mongodb://quizme-db:uQjoKUWoKDSdAaOyJndoltI7ldpwJbAt3z9lX1hwKmNqHcFJV5oudWK5zYRJDgxzuv2bdvWLhede8QCDXa7kNw==@quizme-db.documents.azure.com:10250/?ssl=true'
 
