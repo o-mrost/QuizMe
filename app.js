@@ -9,10 +9,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var azureUrl = process.env.CONNECTION_STRING;
-var url = 'mongodb://localhost:27017/QuizApp';
-//var url = 'mongodb://quizzappdb:dg93krkdqV5hKx5xkcv0sOICL6k3hoDsvZXjaQQZXyABs7BJpkuasf3HmRsqUSczokdyy0MFWLzkgjhyQY1Osw==@quizzappdb.documents.azure.com:10250/?ssl=true'
+var url = 'mongodb://quizme-db:uQjoKUWoKDSdAaOyJndoltI7ldpwJbAt3z9lX1hwKmNqHcFJV5oudWK5zYRJDgxzuv2bdvWLhede8QCDXa7kNw==@quizme-db.documents.azure.com:10250/?ssl=true'
 
-mongoose.connect(url);
+mongoose.connect(azureUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
