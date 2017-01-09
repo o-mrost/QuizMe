@@ -15,11 +15,11 @@
     <string name="Answer4">Can I have another question please?</string>
     <string name="showNextQuestion">Show next question</string>
     <string name="showGameSummary">Show game summary</string>
+    <string name="congratulations">Game over!</string>
+
     <string name="about">About</string>
     <string name="quit">Quit</string>
     <string name="help">Help</string>
-    <string name="pAppName">QuizMe</string>
-    <string name="pAuthor">Olga Mrost, Konstantin Brose, Max Michalek</string>
     <string name="pOk">OK</string>
     <string name="title_activity_show_help">ShowHelp</string>
     <string name="title_activity_settings">Settings</string>
@@ -99,6 +99,6 @@
     <string name="title_activity_show_three_answers_quiz">ShowThreeAnswersQuiz</string>
     <string name="intro">Play the default quiz of choose another one from the top left menu</string>
     <string name="back">Back</string>
-    <string name="congratulations">Congratulations!</string>
+
 
 </resources>

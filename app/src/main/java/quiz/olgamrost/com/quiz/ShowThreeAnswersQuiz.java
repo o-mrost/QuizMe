@@ -48,9 +48,8 @@ public class ShowThreeAnswersQuiz extends Activity {
         List<Response> list = repo.GetResponses(filePath);
         totalQuestions = list.size();
 
-        if (totalQuestions - numberOfQuestionsAnswered == 1){
+        if (totalQuestions - numberOfQuestionsAnswered == 1) {
             nextQuestion.setText("Show game summary");
-
         }
 
         Response currentResponse = list.get(numberOfQuestionsAnswered);
@@ -144,7 +143,6 @@ public class ShowThreeAnswersQuiz extends Activity {
                 }
                 answer2.setEnabled(false);
                 answer3.setEnabled(false);
-
                 showCorrectAnswer();
             }
         });
@@ -162,7 +160,6 @@ public class ShowThreeAnswersQuiz extends Activity {
                 }
                 answer1.setEnabled(false);
                 answer3.setEnabled(false);
-
                 showCorrectAnswer();
 
             }
@@ -181,12 +178,9 @@ public class ShowThreeAnswersQuiz extends Activity {
                 }
                 answer1.setEnabled(false);
                 answer2.setEnabled(false);
-
                 showCorrectAnswer();
             }
         });
-
-
     }
 
     protected void showNextQuestion(View v) {

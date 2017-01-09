@@ -27,7 +27,7 @@ public class ShowQuizActivity extends AppCompatActivity {
     Button answer1, answer2, answer3, answer4, nextQuestion;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
     Boolean solution1, solution2, solution3, solution4;
-    String questionString, filePath, gameSummary;
+    String questionString, filePath;
     MediaPlayer mp1 = null, mp2 = null;
 
 
@@ -56,9 +56,8 @@ public class ShowQuizActivity extends AppCompatActivity {
         List<Response> list = repo.GetResponses(filePath);
         totalQuestions = list.size();
 
-        if (totalQuestions - numberOfQuestionsAnswered == 1){
+        if (totalQuestions - numberOfQuestionsAnswered == 1) {
             nextQuestion.setText("Show game summary");
-
         }
 
         Response currentResponse = list.get(numberOfQuestionsAnswered);
@@ -249,7 +248,6 @@ public class ShowQuizActivity extends AppCompatActivity {
             final Intent intent = new Intent(this, FinalActivity.class);
             intent.putExtra("correctAnswers", correctAnswers);
             intent.putExtra("totalQuestions", totalQuestions);
-            intent.putExtra("gameSummary", "Show game summary");
             startActivity(intent);
         }
     }

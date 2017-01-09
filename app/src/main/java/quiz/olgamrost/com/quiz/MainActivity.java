@@ -1,5 +1,6 @@
 package quiz.olgamrost.com.quiz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,11 +25,14 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Writer;
 
 public class MainActivity extends AppCompatActivity
@@ -111,10 +115,13 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.second_quiz) {
 
+            Log.v(" open second quiz", "dd");
             // get json
             RequestQueue queue = Volley.newRequestQueue(this);
 
             final String response1 = "error";
+
+            // if it works, change this string to our url
             final String url = "http://httpbin.org/get?param1=hello";
 
             // prepare the Request
@@ -122,78 +129,43 @@ public class MainActivity extends AppCompatActivity
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-
                             // display response
                             Log.d("Response", response.toString());
 
+                            try {
+                                Log.v("storage writable", String.valueOf(isExternalStorageWritable()));
+                                Log.v("storage readable", String.valueOf(isExternalStorageReadable()));
 
-                            String fileName="myfile.txt";
-                            String input="Hello World";
-                            String path = Environment.getExternalStorageState();
-                            File file=null;
-                            if (Environment.MEDIA_MOUNTED.equals(path)) {
-                                try {
-                                    byte[] attachment = input.getBytes();
+                                String address = "secondQuiz.txt";
+                                final File dir = new File(getApplicationContext().getFilesDir() + "/Quizez");
+                                dir.mkdirs();
 
-                                    File folder = new File(Environment.getExternalStoragePublicDirectory(
-                                            Environment.DIRECTORY_DOWNLOADS)+"/Email_Client/");
-                                    folder.mkdirs();
+                                final File file = new File(dir, address);
+                                Log.v("file address ", file.toString());
 
+                                FileOutputStream outputStream = new FileOutputStream(file);
+                                outputStream.write((response.toString()).getBytes());
+                                outputStream.close();
 
-                                    file=new File(folder,fileName);
-                                    //Automatically creates the new empty file specified by the name,   if it is not exist.
-                                    file.createNewFile();
-                                    Log.i("EmailClient", "saveFile: Dir created");
-                                    FileOutputStream out = new FileOutputStream(file);
-                                    out.write(attachment);
-
-                                    out.close();
-
-                                    Log.v ("End of new ", " attempt");
-
-                                } catch (IOException e) {
-                                    Log.e("EmailClient", "saveFile: File not saved", e);;
+                                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                                    String line;
+                                    while ((line = br.readLine()) != null) {
+                                        // process the line.
+                                        Log.v("contents of file: ", line);
+                                    }
                                 }
-                            }
 
-//                            try {
-//                                String externalStorageState = Environment.getExternalStorageState();
-//                                Log.v("storage state: ", externalStorageState);
-//
-////                                File root = new File(Environment.getExternalStorageDirectory(), "Notes");
-////                                if (!root.exists()) {
-////                                    root.mkdirs();
-////                                }
-//
-//                                File folder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/EmailClient/");
-//                                folder.mkdirs();
-//
-//                                Log.v("Folder", folder.toString());
-//
-//                                String sFileName = "sixthQuiz.txt";
-//
-//                                File file = new File(folder, sFileName);
-//                                file.createNewFile();
-//
-//                                FileWriter writer = new FileWriter(file);
-//
-//                                writer.append(response.toString());
-//                                writer.flush();
-//                                writer.close();
-//
-////                                Writer output = null;
-////                                File file = new File("storage/sdcard/MyIdea/MyCompositions/" + "sixthQuiz" + ".txt");
-////                                output = new BufferedWriter(new FileWriter(file));
-////                                output.write(response.toString());
-////                                output.close();
-//                                Toast.makeText(getApplicationContext(), "File saved", Toast.LENGTH_LONG).show();
-//
-//                            } catch (Exception e) {
-//                                Log.v("Exception: ", e.getMessage());
-//                                Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-//                                e.printStackTrace();
-//                            }
-//                            finish();
+                                fileAddress = file.toString();
+                                Log.v("add:  ", fileAddress);
+
+                                Toast.makeText(getApplicationContext(), "File saved", Toast.LENGTH_LONG).show();
+
+                            } catch (Exception e) {
+                                Log.v("Exception: ", e.getMessage());
+                                Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                                e.printStackTrace();
+                            }
+                            finish();
                         }
                     },
                     new Response.ErrorListener() {
@@ -207,7 +179,7 @@ public class MainActivity extends AppCompatActivity
             // add it to the RequestQueue
             queue.add(getRequest);
 
-            fileAddress = "secondQuiz.txt";
+//            fileAddress = "secondQuiz.txt";
             showQuestions(getCurrentFocus());
 
         } else if (id == R.id.third_quiz) {
@@ -245,5 +217,24 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("file", fileAddress);
         startActivity(intent);
 
+    }
+
+
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    /* Checks if external storage is available to at least read */
+    public boolean isExternalStorageReadable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            return true;
+        }
+        return false;
     }
 }

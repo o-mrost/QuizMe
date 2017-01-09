@@ -27,11 +27,11 @@ public class FinalActivity extends Activity {
 
         double score = correctAnswersInt / totalQuestions * 100;
 
-        correctAnswers.setText("You answered correctly " + (int) correctAnswersInt + " questions");
+        correctAnswers.setText("Total questions: " + (int) totalQuestions + "\nAnswered correctly: " + (int) correctAnswersInt);
         totalResult.setText("Your score is " + score + "%");
     }
 
-    public void goBackClicked(final View v){
+    public void goBackClicked(final View v) {
 
         final Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
