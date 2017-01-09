@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         numberOfQuestionsAnswered = 0;
         numberOfCorrectAnswers = 0;
 

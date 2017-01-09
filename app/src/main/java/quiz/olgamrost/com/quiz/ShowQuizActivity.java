@@ -24,10 +24,10 @@ import static quiz.olgamrost.com.quiz.R.drawable.wrong;
 public class ShowQuizActivity extends AppCompatActivity {
 
     TextView question;
-    Button answer1, answer2, answer3, answer4;
+    Button answer1, answer2, answer3, answer4, nextQuestion;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
     Boolean solution1, solution2, solution3, solution4;
-    String questionString, filePath;
+    String questionString, filePath, gameSummary;
     MediaPlayer mp1 = null, mp2 = null;
 
 
@@ -41,13 +41,13 @@ public class ShowQuizActivity extends AppCompatActivity {
         answer2 = (Button) findViewById(R.id.answer2);
         answer3 = (Button) findViewById(R.id.answer3);
         answer4 = (Button) findViewById(R.id.answer4);
+        nextQuestion = (Button) findViewById(R.id.nextQuestion);
 
         Intent intent = getIntent();
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
         correctAnswers = intent.getIntExtra("correctAnswers", 0);
 
         filePath = intent.getStringExtra("file");
-
         if (filePath == null) {
             filePath = "firstQuiz.txt";
         }
@@ -56,12 +56,16 @@ public class ShowQuizActivity extends AppCompatActivity {
         List<Response> list = repo.GetResponses(filePath);
         totalQuestions = list.size();
 
+        if (totalQuestions - numberOfQuestionsAnswered == 1){
+            nextQuestion.setText("Show game summary");
+
+        }
+
         Response currentResponse = list.get(numberOfQuestionsAnswered);
         questionString = currentResponse.getQuestion();
         List<AnswersBean> answers = currentResponse.getAnswers();
 
         question.setText(String.valueOf(numberOfQuestionsAnswered + 1) + ". " + questionString);
-
         mp1 = new MediaPlayer().create(this, R.raw.wrong);
         mp2 = new MediaPlayer().create(this, R.raw.correct);
 
@@ -73,12 +77,16 @@ public class ShowQuizActivity extends AppCompatActivity {
     }
 
     private void randomizeAnswers(List<AnswersBean> answers) {
+
         AnswerSolution first = new AnswerSolution();
         String answer1String = answers.get(0).getAnswer();
         solution1 = answers.get(0).isSolution();
         first.setAnswer(answer1String);
         first.setSolution(solution1);
 
+        // Declaration of other three items is collapsed for brevity
+        // ...
+        // region
         AnswerSolution second = new AnswerSolution();
         String answer2String = answers.get(1).getAnswer();
         solution2 = answers.get(1).isSolution();
@@ -96,7 +104,7 @@ public class ShowQuizActivity extends AppCompatActivity {
         solution4 = answers.get(3).isSolution();
         fourth.setAnswer(answer4String);
         fourth.setSolution(solution4);
-
+        // endregion
         ArrayList<AnswerSolution> newlist = new ArrayList<>(4);
         newlist.add(first);
         newlist.add(second);
@@ -113,6 +121,9 @@ public class ShowQuizActivity extends AppCompatActivity {
             solution1 = newlist.get(i1).isSolution();
             newlist.remove(newlist.get(i1));
 
+            // Randomizing of other three items is collapsed for brevity
+            // ...
+            //region
             int i2 = ran1.nextInt(newlist.size());
             System.out.println("second random: " + i2);
             answer2.setText(newlist.get(i2).getAnswer());
@@ -130,10 +141,13 @@ public class ShowQuizActivity extends AppCompatActivity {
             answer4.setText(newlist.get(i4).getAnswer());
             solution4 = newlist.get(i4).isSolution();
             newlist.remove(newlist.get(i4));
+
+            //endregion
         }
     }
 
     private void disableOtherButtons() {
+
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,6 +249,7 @@ public class ShowQuizActivity extends AppCompatActivity {
             final Intent intent = new Intent(this, FinalActivity.class);
             intent.putExtra("correctAnswers", correctAnswers);
             intent.putExtra("totalQuestions", totalQuestions);
+            intent.putExtra("gameSummary", "Show game summary");
             startActivity(intent);
         }
     }

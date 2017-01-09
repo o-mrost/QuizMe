@@ -21,7 +21,7 @@ import static quiz.olgamrost.com.quiz.R.drawable.wrong;
 public class ShowThreeAnswersQuiz extends Activity {
 
     TextView question;
-    Button answer1, answer2, answer3;
+    Button answer1, answer2, answer3, nextQuestion;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
     Boolean solution1, solution2, solution3;
     String questionString, filePath;
@@ -37,6 +37,7 @@ public class ShowThreeAnswersQuiz extends Activity {
         answer1 = (Button) findViewById(R.id.answer1);
         answer2 = (Button) findViewById(R.id.answer2);
         answer3 = (Button) findViewById(R.id.answer3);
+        nextQuestion = (Button) findViewById(R.id.nextQuestion);
 
         Intent intent = getIntent();
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
@@ -46,6 +47,11 @@ public class ShowThreeAnswersQuiz extends Activity {
         ResponseRepository repo = new ResponseRepository(getAssets());
         List<Response> list = repo.GetResponses(filePath);
         totalQuestions = list.size();
+
+        if (totalQuestions - numberOfQuestionsAnswered == 1){
+            nextQuestion.setText("Show game summary");
+
+        }
 
         Response currentResponse = list.get(numberOfQuestionsAnswered);
         questionString = currentResponse.getQuestion();

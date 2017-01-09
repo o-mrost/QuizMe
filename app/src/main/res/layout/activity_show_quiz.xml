@@ -4,39 +4,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/question"
+    <TextView android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:text="@string/Question1"
         android:textSize="30dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/answer1"
+        <Button android:id="@+id/answer1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@color/light"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:background="@drawable/gradient"
-            android:text="@string/Answer1" />
+            android:text="@string/Answer1"
+            android:textColor="@color/light" />
 
-        <Button
-            android:id="@+id/answer2"
+        <Button android:id="@+id/answer2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="5dp"
-            android:textColor="@color/light"
+            android:layout_weight="1"
             android:background="@drawable/gradient"
-            android:text="@string/Answer2" />
+            android:text="@string/Answer2"
+            android:textColor="@color/light" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -44,37 +41,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/answer3"
+        <Button android:id="@+id/answer3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="5dp"
-            android:textColor="@color/light"
+            android:layout_weight="1"
             android:background="@drawable/gradient"
-            android:text="@string/Answer3" />
+            android:text="@string/Answer3"
+            android:textColor="@color/light" />
 
-        <Button
-            android:id="@+id/answer4"
+        <Button android:id="@+id/answer4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:layout_margin="5dp"
-            android:textColor="@color/light"
+            android:layout_weight="1"
             android:background="@drawable/gradient"
-            android:text="@string/Answer4" />
+            android:text="@string/Answer4"
+            android:textColor="@color/light" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/nextQuestion"
+    <Button android:id="@+id/nextQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:onClick="showNextQuestion"
-        android:text="Show next question"
-        android:textColor="@color/light"
         android:layout_gravity="center"
-        android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/gradient"
-        android:layout_marginTop="20dp"/>
+        android:onClick="showNextQuestion"
+        android:padding="10dp"
+        android:text="Show next question"
+        android:textColor="@color/light" />
 </LinearLayout>

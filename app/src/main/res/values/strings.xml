@@ -14,6 +14,7 @@
     <string name="Answer3">I guess, it is 4, but I am not sure</string>
     <string name="Answer4">Can I have another question please?</string>
     <string name="showNextQuestion">Show next question</string>
+    <string name="showGameSummary">Show game summary</string>
     <string name="about">About</string>
     <string name="quit">Quit</string>
     <string name="help">Help</string>
