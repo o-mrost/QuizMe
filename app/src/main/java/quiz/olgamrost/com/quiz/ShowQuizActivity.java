@@ -26,15 +26,17 @@ public class ShowQuizActivity extends AppCompatActivity {
     TextView question;
     Button answer1, answer2, answer3, answer4, nextQuestion;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
-    Boolean solution1, solution2, solution3, solution4;
-    String questionString, filePath;
+    Boolean solution1, solution2, solution3, solution4, fileFromServer;
+    String questionString, filePath, fromServer = "no";
     MediaPlayer mp1 = null, mp2 = null;
-
+    List<Response> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_quiz);
+
+        Log.v("*** onCreate", "opened");
 
         question = (TextView) findViewById(R.id.question);
         answer1 = (Button) findViewById(R.id.answer1);
@@ -46,6 +48,11 @@ public class ShowQuizActivity extends AppCompatActivity {
         Intent intent = getIntent();
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
         correctAnswers = intent.getIntExtra("correctAnswers", 0);
+        fromServer = intent.getStringExtra("server");
+
+        Log.v("show quiz from server", "fromServer: " + fromServer);
+
+
 
         filePath = intent.getStringExtra("file");
         if (filePath == null) {
@@ -53,7 +60,19 @@ public class ShowQuizActivity extends AppCompatActivity {
         }
 
         ResponseRepository repo = new ResponseRepository(getAssets());
-        List<Response> list = repo.GetResponses(filePath);
+
+        ResponseRepository repo1 = new ResponseRepository(getApplicationContext());
+        if (fromServer == "yes") {
+            Log.v(" +++ file from server", "dd");
+            list = repo1.GetResponsesFromServer(filePath);
+
+        } else {
+            Log.v(" +++ not from server", "dd");
+            list = repo.GetResponses(filePath);
+        }
+
+
+
         totalQuestions = list.size();
 
         if (totalQuestions - numberOfQuestionsAnswered == 1) {
@@ -76,6 +95,8 @@ public class ShowQuizActivity extends AppCompatActivity {
     }
 
     private void randomizeAnswers(List<AnswersBean> answers) {
+
+        Log.v("*** randomizeAnswers", "opened");
 
         AnswerSolution first = new AnswerSolution();
         String answer1String = answers.get(0).getAnswer();
@@ -146,6 +167,8 @@ public class ShowQuizActivity extends AppCompatActivity {
     }
 
     private void disableOtherButtons() {
+
+        Log.v("*** disableOtherButtons", "opened");
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override

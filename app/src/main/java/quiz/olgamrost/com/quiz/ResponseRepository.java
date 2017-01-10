@@ -1,5 +1,6 @@
 package quiz.olgamrost.com.quiz;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
@@ -12,6 +13,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -30,41 +33,18 @@ import quiz.olgamrost.com.quiz.Json.Response;
 public class ResponseRepository {
 
     private AssetManager assetManager;
+    private Context context;
 
     public ResponseRepository(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
 
-//    public List<Response> getResponcesOnline() {
-//
-//        String url = "quizmerbn.azurewebsites.net/networks";
-//
-//        // Instantiate the RequestQueue.
-//        RequestQueue queue = Volley.newRequestQueue(this);
-////        String url = "http://www.google.com";
-//
-//// Request a string response from the provided URL.
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // Display the first 500 characters of the response string.
-//                        Log.v("", "Response is: " + response.substring(0, 500));
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.v("", "That didn't work!");
-//            }
-//        });
-//// Add the request to the RequestQueue.
-//        queue.add(stringRequest);
-//
-//        return null;
-//    }
+    public ResponseRepository(Context context){
+
+        this.context = context;
+    }
 
     public List<Response> GetResponses(String fileAddress) {
-
 
         try {
             InputStream is = assetManager.open(fileAddress);
@@ -92,6 +72,32 @@ public class ResponseRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    public List<Response> GetResponsesFromServer(String fileAddress){
+
+        int ch;
+        StringBuffer fileContent = new StringBuffer("");
+        FileInputStream fis;
+        try {
+
+            fis = context.openFileInput(fileAddress);
+//                    openFileInput(fileAddress);
+            try {
+                while( (ch = fis.read()) != -1)
+                    fileContent.append((char)ch);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String data = new String(fileContent);
+
+        Log.v(" +++ ", data);
+
         return null;
     }
 }

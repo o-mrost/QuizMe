@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.BoolRes;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     int numberOfQuestionsAnswered, numberOfCorrectAnswers;
-    String fileAddress;
+    String fileAddress, fromServer = "no";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,79 +112,25 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.first_quiz) {
+            Log.v(" ********* first quiz", "  ");
+            Log.v("main: file from server", fromServer);
             fileAddress = "firstQuiz.txt";
             showQuestions(getCurrentFocus());
 
         } else if (id == R.id.second_quiz) {
 
-            Log.v(" open second quiz", "dd");
-            // get json
-            RequestQueue queue = Volley.newRequestQueue(this);
+            Log.v(" ********* second quiz", "  ");
 
-            final String response1 = "error";
+            getJsonResponse();
 
-            // if it works, change this string to our url
-            final String url = "http://httpbin.org/get?param1=hello";
 
-            // prepare the Request
-            JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            // display response
-                            Log.d("Response", response.toString());
 
-                            try {
-                                Log.v("storage writable", String.valueOf(isExternalStorageWritable()));
-                                Log.v("storage readable", String.valueOf(isExternalStorageReadable()));
-
-                                String address = "secondQuiz.txt";
-                                final File dir = new File(getApplicationContext().getFilesDir() + "/Quizez");
-                                dir.mkdirs();
-
-                                final File file = new File(dir, address);
-                                Log.v("file address ", file.toString());
-
-                                FileOutputStream outputStream = new FileOutputStream(file);
-                                outputStream.write((response.toString()).getBytes());
-                                outputStream.close();
-
-                                try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-                                    String line;
-                                    while ((line = br.readLine()) != null) {
-                                        // process the line.
-                                        Log.v("contents of file: ", line);
-                                    }
-                                }
-
-                                fileAddress = file.toString();
-                                Log.v("add:  ", fileAddress);
-
-                                Toast.makeText(getApplicationContext(), "File saved", Toast.LENGTH_LONG).show();
-
-                            } catch (Exception e) {
-                                Log.v("Exception: ", e.getMessage());
-                                Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                                e.printStackTrace();
-                            }
-                            finish();
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("Error.Response", response1);
-                        }
-                    }
-            );
-
-            // add it to the RequestQueue
-            queue.add(getRequest);
 
 //            fileAddress = "secondQuiz.txt";
             showQuestions(getCurrentFocus());
 
         } else if (id == R.id.third_quiz) {
+            Log.v(" ********* third quiz", "dd");
             fileAddress = "thirdQuiz.txt";
             showQuestions(getCurrentFocus());
 
@@ -199,12 +147,87 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void getJsonResponse() {
+
+
+        // get json
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        final String response1 = "error";
+
+        // if it works, change this string to our url
+        final String url = "http://httpbin.org/get?param1=hello";
+
+        // prepare the Request
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        Log.d("Response", response.toString());
+
+                        try {
+//                                Log.v("storage writable", String.valueOf(isExternalStorageWritable()));
+//                                Log.v("storage readable", String.valueOf(isExternalStorageReadable()));
+
+                            // write to internal storage
+                            String address = "newQuiz.txt";
+
+
+
+                            final File dir = new File(getApplicationContext().getFilesDir() + "/Quizez");
+                            dir.mkdirs();
+
+                            final File file = new File(dir, address);
+                            Log.v("file address ", file.toString());
+
+                            FileOutputStream outputStream = new FileOutputStream(file);
+                            outputStream.write((response.toString()).getBytes());
+                            outputStream.close();
+
+                            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                                String line;
+                                while ((line = br.readLine()) != null) {
+                                    // process the line.
+                                    Log.v("contents of file: ", line);
+                                }
+                            }
+
+                            fileAddress = file.toString();
+
+                            fromServer = "yes";
+
+                            Log.v("main: file from server", fromServer);
+
+                            Toast.makeText(getApplicationContext(), "File saved", Toast.LENGTH_LONG).show();
+
+                        } catch (Exception e) {
+                            Log.v("Exception: ", e.getMessage());
+                            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                        finish();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", response1);
+                    }
+                }
+        );
+
+        // add it to the RequestQueue
+        queue.add(getRequest);
+
+    }
     public void showQuestions(final View cmd) {
 
         final Intent intent = new Intent(this, ShowQuizActivity.class);
         intent.putExtra("number", numberOfQuestionsAnswered);
         intent.putExtra("correctAnswers", numberOfCorrectAnswers);
         intent.putExtra("file", fileAddress);
+        intent.putExtra("server", fromServer);
         startActivity(intent);
 
     }
