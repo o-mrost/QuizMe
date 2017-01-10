@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     int numberOfQuestionsAnswered, numberOfCorrectAnswers;
-    String fileAddress, fromServer = "no";
+    String fileAddress, fromServer = "no", jsonFileText;
 
 
     @Override
@@ -123,9 +123,6 @@ public class MainActivity extends AppCompatActivity
 
             getJsonResponse();
 
-
-
-
 //            fileAddress = "secondQuiz.txt";
             showQuestions(getCurrentFocus());
 
@@ -147,8 +144,20 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void getJsonResponse() {
 
+    private void showServerQuiz(View view){
+        fromServer = "yes";
+        Log.v("show server quiz", ",, ");
+        final Intent intent = new Intent(this, ShowQuizActivity.class);
+        intent.putExtra("number", numberOfQuestionsAnswered);
+        intent.putExtra("correctAnswers", numberOfCorrectAnswers);
+        intent.putExtra("file", fileAddress);
+        intent.putExtra("server", fromServer);
+        startActivity(intent);
+    }
+
+
+    public void getJsonResponse() {
 
         // get json
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -166,13 +175,16 @@ public class MainActivity extends AppCompatActivity
                         // display response
                         Log.d("Response", response.toString());
 
+                        jsonFileText = response.toString();
+
+                        Log.v("3 main activity: json", jsonFileText);
+
                         try {
 //                                Log.v("storage writable", String.valueOf(isExternalStorageWritable()));
 //                                Log.v("storage readable", String.valueOf(isExternalStorageReadable()));
 
                             // write to internal storage
                             String address = "newQuiz.txt";
-
 
 
                             final File dir = new File(getApplicationContext().getFilesDir() + "/Quizez");
@@ -221,6 +233,7 @@ public class MainActivity extends AppCompatActivity
         queue.add(getRequest);
 
     }
+
     public void showQuestions(final View cmd) {
 
         final Intent intent = new Intent(this, ShowQuizActivity.class);
@@ -228,6 +241,7 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("correctAnswers", numberOfCorrectAnswers);
         intent.putExtra("file", fileAddress);
         intent.putExtra("server", fromServer);
+        intent.putExtra("json", jsonFileText);
         startActivity(intent);
 
     }

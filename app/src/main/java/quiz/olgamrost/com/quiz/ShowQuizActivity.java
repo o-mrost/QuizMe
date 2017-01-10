@@ -52,8 +52,6 @@ public class ShowQuizActivity extends AppCompatActivity {
 
         Log.v("show quiz from server", "fromServer: " + fromServer);
 
-
-
         filePath = intent.getStringExtra("file");
         if (filePath == null) {
             filePath = "firstQuiz.txt";
@@ -70,8 +68,6 @@ public class ShowQuizActivity extends AppCompatActivity {
             Log.v(" +++ not from server", "dd");
             list = repo.GetResponses(filePath);
         }
-
-
 
         totalQuestions = list.size();
 
@@ -274,4 +270,9 @@ public class ShowQuizActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    private void showServerQuiz(){
+        Log.v("show server quiz", ",, ");
+    }
+
 }
