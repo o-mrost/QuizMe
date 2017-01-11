@@ -1,22 +1,31 @@
 package quiz.olgamrost.com.quiz;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
 import quiz.olgamrost.com.quiz.Json.AnswersBean;
 import quiz.olgamrost.com.quiz.Json.Response;
-
 import static quiz.olgamrost.com.quiz.R.drawable.correct;
 import static quiz.olgamrost.com.quiz.R.drawable.wrong;
 
@@ -26,8 +35,8 @@ public class ShowQuizActivity extends AppCompatActivity {
     TextView question;
     Button answer1, answer2, answer3, answer4, nextQuestion;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
-    Boolean solution1, solution2, solution3, solution4, fileFromServer;
-    String questionString, filePath, fromServer = "no";
+    Boolean solution1, solution2, solution3, solution4;
+    String questionString, filePath, fromServer = "no", jsonFileText;
     MediaPlayer mp1 = null, mp2 = null;
     List<Response> list;
 
@@ -45,27 +54,35 @@ public class ShowQuizActivity extends AppCompatActivity {
         answer4 = (Button) findViewById(R.id.answer4);
         nextQuestion = (Button) findViewById(R.id.nextQuestion);
 
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         Intent intent = getIntent();
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
         correctAnswers = intent.getIntExtra("correctAnswers", 0);
         fromServer = intent.getStringExtra("server");
 
-        Log.v("show quiz from server", "fromServer: " + fromServer);
+        if (fromServer.equals("yes")) {
 
-        filePath = intent.getStringExtra("file");
-        if (filePath == null) {
-            filePath = "firstQuiz.txt";
-        }
+            getServerResponse();
 
-        ResponseRepository repo = new ResponseRepository(getAssets());
-
-        ResponseRepository repo1 = new ResponseRepository(getApplicationContext());
-        if (fromServer == "yes") {
-            Log.v(" +++ file from server", "dd");
-            list = repo1.GetResponsesFromServer(filePath);
+            Log.v("*** jsonFileText url ", "  " + jsonFileText);
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<Collection<Response>>() {
+            }.getType();
+            Collection<Response> items = gson.fromJson(jsonFileText, collectionType);
+            list = (List<Response>) items;
 
         } else {
-            Log.v(" +++ not from server", "dd");
+
+            filePath = intent.getStringExtra("file");
+            if (filePath == null) {
+                filePath = "firstQuiz.txt";
+            }
+
+            ResponseRepository repo = new ResponseRepository(getAssets());
             list = repo.GetResponses(filePath);
         }
 
@@ -132,7 +149,6 @@ public class ShowQuizActivity extends AppCompatActivity {
 
         while (i < newlist.size()) {
             int i1 = ran1.nextInt(newlist.size());
-            System.out.println("first random: " + i1);
             answer1.setText(newlist.get(i1).getAnswer());
             solution1 = newlist.get(i1).isSolution();
             newlist.remove(newlist.get(i1));
@@ -141,19 +157,16 @@ public class ShowQuizActivity extends AppCompatActivity {
             // ...
             //region
             int i2 = ran1.nextInt(newlist.size());
-            System.out.println("second random: " + i2);
             answer2.setText(newlist.get(i2).getAnswer());
             solution2 = newlist.get(i2).isSolution();
             newlist.remove(newlist.get(i2));
 
             int i3 = ran1.nextInt(newlist.size());
-            System.out.println("third random: " + i3);
             answer3.setText(newlist.get(i3).getAnswer());
             solution3 = newlist.get(i3).isSolution();
             newlist.remove(newlist.get(i3));
 
             int i4 = ran1.nextInt(newlist.size());
-            System.out.println("fourth random: " + i4);
             answer4.setText(newlist.get(i4).getAnswer());
             solution4 = newlist.get(i4).isSolution();
             newlist.remove(newlist.get(i4));
@@ -262,6 +275,7 @@ public class ShowQuizActivity extends AppCompatActivity {
             intent.putExtra("number", numberOfQuestionsAnswered);
             intent.putExtra("correctAnswers", correctAnswers);
             intent.putExtra("file", filePath);
+            intent.putExtra("server", fromServer);
             startActivity(intent);
         } else {
             final Intent intent = new Intent(this, FinalActivity.class);
@@ -271,8 +285,39 @@ public class ShowQuizActivity extends AppCompatActivity {
         }
     }
 
-    private void showServerQuiz(){
-        Log.v("show server quiz", ",, ");
-    }
+    public void getServerResponse() {
+        URL url = null;
+        try {
+        //  url = new URL("http://quizmerbn.azurewebsites.net/networks");
+            url = new URL("http://10.0.2.2:3000/networks");
 
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        HttpURLConnection urlConnection = null;
+        try {
+            urlConnection = (HttpURLConnection) url.openConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+
+            InputStream in = url.openStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+            }
+            System.out.println("+++ result +++ " + result.toString());
+
+            jsonFileText = result.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            urlConnection.disconnect();
+        }
+
+    }
 }

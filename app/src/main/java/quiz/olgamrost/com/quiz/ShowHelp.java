@@ -9,9 +9,8 @@ import android.webkit.WebView;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static javax.xml.transform.OutputKeys.ENCODING;
-
 public class ShowHelp extends Activity {
+
     private static final String MIMETYPE = "text/html";
     private static final String ENCODING = "UTF-8";
     @Override
@@ -22,8 +21,6 @@ public class ShowHelp extends Activity {
 
         final WebView view = (WebView) findViewById( R.id.helpview );
         view.getSettings().setJavaScriptEnabled( true );
-
-
 
         InputStream is = getResources().openRawResource( R.raw.help );
 
@@ -41,7 +38,6 @@ public class ShowHelp extends Activity {
 
         view.bringToFront();
     }
-
 
     protected void goBack(View v){
 

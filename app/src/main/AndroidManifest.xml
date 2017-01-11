@@ -4,10 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,7 +21,6 @@
             </intent-filter>
         </activity>
 
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -42,11 +37,9 @@
             android:name=".ShowHelp"
             android:label="@string/title_activity_show_help" />
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity
             android:name=".ShowThreeAnswersQuiz"
             android:label="@string/title_activity_show_three_answers_quiz"></activity>
+
     </application>
 
 </manifest>

@@ -2,22 +2,22 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "The TCP protocol is assigned to which OSI layer?",
+	"question": "Wenn ein Datensatz auf mehrere andere Datensätze verweist liegt welche Beziehung vor?",
 	"__v": 4,
 	"answers": [{
-		"answer": "Transport Layer",
+		"answer": "1:n Beziehung",
 		"solution": true,
 		"_id": "5844744155b10b3d26489773"
 	}, {
-		"answer": "Session Layer",
+		"answer": "1:1 Beziehung",
 		"solution": false,
 		"_id": "5844749955b10b3d26489774"
 	}, {
-		"answer": "Network Layer",
+		"answer": "n:m Beziehung",
 		"solution": false,
 		"_id": "5844749f55b10b3d26489775"
 	}, {
-		"answer": "Presentation Layer",
+		"answer": "Dies ist nicht möglich",
 		"solution": false,
 		"_id": "584474e555b10b3d26489776"
 	}],
@@ -26,22 +26,22 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "Hello from first quiz",
+	"question": "Welche Normalform liegt vor, wenn alle Attribute elementare Informationen und keine Wiederholungen aufweisen?",
 	"__v": 4,
 	"answers": [{
-		"answer": "some answer",
+		"answer": "Zweite Normalform",
 		"solution": false,
 		"_id": "5844744155b10b3d26489773"
 	}, {
-		"answer": "correct answer",
+		"answer": "Erste Normalform",
 		"solution": true,
 		"_id": "5844749955b10b3d26489774"
 	}, {
-		"answer": "third answer",
+		"answer": "Dritte Normalform",
 		"solution": false,
 		"_id": "5844749f55b10b3d26489775"
 	}, {
-		"answer": "fourth answer",
+		"answer": "Vierte Normalform",
 		"solution": false,
 		"_id": "584474e555b10b3d26489776"
 	}],
@@ -50,22 +50,22 @@
    	"_id": "58446e0c37b3113b6b024be4",
    	"updatedAt": "2016-12-04T19:56:21.420Z",
    	"createdAt": "2016-12-04T19:27:08.914Z",
-   	"question": "Third question",
+   	"question": "Was ist ein Tupel?",
    	"__v": 4,
    	"answers": [{
-   		"answer": "some answer",
+   		"answer": "Ein einziges Datenfeld",
    		"solution": false,
    		"_id": "5844744155b10b3d26489773"
    	}, {
-   		"answer": "correct answer",
+   		"answer": "Ein kompletter Datensatz",
    		"solution": true,
    		"_id": "5844749955b10b3d26489774"
    	}, {
-   		"answer": "third answer",
+   		"answer": "Eine Spalte der Tabelle",
    		"solution": false,
    		"_id": "5844749f55b10b3d26489775"
    	}, {
-   		"answer": "fourth answer",
+   		"answer": "Eine gesamte Tabelle",
    		"solution": false,
    		"_id": "584474e555b10b3d26489776"
    	}],
@@ -75,22 +75,22 @@
       	"_id": "58446e0c37b3113b6b024be4",
       	"updatedAt": "2016-12-04T19:56:21.420Z",
       	"createdAt": "2016-12-04T19:27:08.914Z",
-      	"question": "Fourth question",
+      	"question": "Was ist ein Attribut?",
       	"__v": 4,
       	"answers": [{
-      		"answer": "some answer",
+      		"answer": "Ein kompletter Datensatz",
       		"solution": false,
       		"_id": "5844744155b10b3d26489773"
       	}, {
-      		"answer": "correct answer",
+      		"answer": "Eine Spalte der Tabelle",
       		"solution": true,
       		"_id": "5844749955b10b3d26489774"
       	}, {
-      		"answer": "third answer",
+      		"answer": "Ein einziges Datenfeld",
       		"solution": false,
       		"_id": "5844749f55b10b3d26489775"
       	}, {
-      		"answer": "fourth answer",
+      		"answer": "Eine gesamte Tabelle",
       		"solution": false,
       		"_id": "584474e555b10b3d26489776"
       	}],

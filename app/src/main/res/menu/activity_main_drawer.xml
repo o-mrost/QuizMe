@@ -6,15 +6,11 @@
             <item
                 android:id="@+id/first_quiz"
                 android:icon="@drawable/ic_menu_share"
-                android:title="OSI model" />
+                android:title="Datenbanken" />
             <item
                 android:id="@+id/second_quiz"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Second quiz" />
-            <item
-                android:id="@+id/third_quiz"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="Third quiz" />
+                android:title="OSI Model - Quiz from server" />
             <item
                 android:id="@+id/fourth_quiz"
                 android:icon="@drawable/ic_menu_gallery"

@@ -2,24 +2,15 @@ package quiz.olgamrost.com.quiz;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
-import java.net.URI;
 import java.util.Collection;
 import java.util.List;
 
@@ -37,11 +28,6 @@ public class ResponseRepository {
 
     public ResponseRepository(AssetManager assetManager) {
         this.assetManager = assetManager;
-    }
-
-    public ResponseRepository(Context context){
-
-        this.context = context;
     }
 
     public List<Response> GetResponses(String fileAddress) {
@@ -72,32 +58,6 @@ public class ResponseRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
-    }
-
-    public List<Response> GetResponsesFromServer(String fileAddress){
-
-        int ch;
-        StringBuffer fileContent = new StringBuffer("");
-        FileInputStream fis;
-        try {
-
-            fis = context.openFileInput(fileAddress);
-//                    openFileInput(fileAddress);
-            try {
-                while( (ch = fis.read()) != -1)
-                    fileContent.append((char)ch);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        String data = new String(fileContent);
-
-        Log.v(" +++ ", data);
-
         return null;
     }
 }
