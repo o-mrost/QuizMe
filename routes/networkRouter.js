@@ -35,24 +35,4 @@ networkRouter.route('/')
         });
     });
 
-networkRouter.route('/:answerId/answer')
-    .get(function (req, res, next) {
-        Networks.findById(req.params.answerId, function (err, network) {
-            if (err) throw err;
-            res.json(network.answers);
-        });
-    })
-
-    .post(function (req, res, next) {
-         Networks.findById(req.params.answerId, function (err, network) {
-            if (err) throw err;
-            network.answers.push(req.body);
-            network.save(function (err, network) {
-                if (err) throw err;
-                console.log('Updated answer!');
-                res.json(network);
-            });
-        });
-    });
-
 module.exports = networkRouter;
