@@ -1,9 +1,11 @@
+//import required modules
 var mongoose = require('mongoose');
 require('mongoose-currency').loadType(mongoose);
 var Schema = mongoose.Schema;
 var Currency = mongoose.Types.Currency;
 
 // Answer Schema 
+//subschema from Network Schema
 var answerSchema = new Schema({
     answer: { type: String, required: true },
     solution: {type: Boolean, required: true}
@@ -11,6 +13,7 @@ var answerSchema = new Schema({
 
 
 // Network Schema 
+//apply datatypes for a schema
 var networkSchema = new Schema({
     question: { type: String, required: true, unique: true },
     category: { type: String, default: '' },

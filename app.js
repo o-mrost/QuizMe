@@ -1,3 +1,4 @@
+//import required modules
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -8,7 +9,7 @@ var mongoose = require('mongoose');
 var azureUrl = process.env.CONNECTION_STRING;
 var url = 'mongodb://localhost:27017/QuizApp';
 
-mongoose.connect(azureUrl);
+mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
@@ -26,14 +27,17 @@ var env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
+//set up the logger
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+//set up static directory for ressources
 app.use(express.static(path.join(__dirname, 'public')));
 
+//apply router to routes
 app.use('/', routes);
 app.use('/networks',networkRouter);
 

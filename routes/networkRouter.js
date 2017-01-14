@@ -1,7 +1,4 @@
-/**
- * Created by Max on 02.12.16.
- */
-
+//import required modules
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -12,10 +9,12 @@ var networkRouter = express.Router();
 
 networkRouter.use(bodyParser.json());
 
-/** Route '/' **/
+// Route '/networks' 
 
 networkRouter.route('/')
 
+//for every incoming GET request query the DB for all questions
+//and return it as a JSON
     .get(function (req, res, next) {
         Networks.find({}, function (err, network) {
             if (err) throw err;
@@ -23,6 +22,8 @@ networkRouter.route('/')
         });
     })
 
+//for every incoming POST request add a new record that 
+//matches the schema
     .post(function (req, res, next) {
         Networks.create(req.body, function (err, network) {
             if (err) throw err;
