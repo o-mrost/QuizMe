@@ -20,6 +20,7 @@ import static quiz.olgamrost.com.quiz.R.drawable.wrong;
 
 public class ShowThreeAnswersQuiz extends Activity {
 
+
     TextView question;
     Button answer1, answer2, answer3, nextQuestion;
     int numberOfQuestionsAnswered, totalQuestions, correctAnswers;
@@ -183,6 +184,11 @@ public class ShowThreeAnswersQuiz extends Activity {
         });
     }
 
+    /**
+     * Show next question.
+     *
+     * @param v the v
+     */
     protected void showNextQuestion(View v) {
 
         if (numberOfQuestionsAnswered < totalQuestions) {

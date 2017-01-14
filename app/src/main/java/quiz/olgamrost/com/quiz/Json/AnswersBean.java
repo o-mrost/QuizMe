@@ -1,11 +1,10 @@
 package quiz.olgamrost.com.quiz.Json;
 
+
 /**
  * Created by olgamrost on 20/12/2016.
  */
-
-
-    public  class AnswersBean {
+public  class AnswersBean {
         /**
          * answer : Transport Layer
          * solution : true
@@ -16,27 +15,57 @@ package quiz.olgamrost.com.quiz.Json;
         private boolean solution;
         private String _id;
 
-        public String getAnswer() {
+    /**
+     * Gets answer.
+     *
+     * @return the answer
+     */
+    public String getAnswer() {
             return answer;
         }
 
-        public void setAnswer(String answer) {
+    /**
+     * Sets answer.
+     *
+     * @param answer the answer
+     */
+    public void setAnswer(String answer) {
             this.answer = answer;
         }
 
-        public boolean isSolution() {
+    /**
+     * Is solution boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isSolution() {
             return solution;
         }
 
-        public void setSolution(boolean solution) {
+    /**
+     * Sets solution.
+     *
+     * @param solution the solution
+     */
+    public void setSolution(boolean solution) {
             this.solution = solution;
         }
 
-        public String get_id() {
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public String get_id() {
             return _id;
         }
 
-        public void set_id(String _id) {
+    /**
+     * Sets id.
+     *
+     * @param _id the id
+     */
+    public void set_id(String _id) {
             this._id = _id;
         }
     }

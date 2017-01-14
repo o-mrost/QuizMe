@@ -2,7 +2,8 @@
 	"_id": "58446e0c37b3113b6b024be4",
 	"updatedAt": "2016-12-04T19:56:21.420Z",
 	"createdAt": "2016-12-04T19:27:08.914Z",
-	"question": "Wenn ein Datensatz auf mehrere andere Datensätze verweist liegt welche Beziehung vor?",
+	"question": "Wenn ein Datensatz auf mehrere andere
+	Datensätze verweist liegt welche Beziehung vor?",
 	"__v": 4,
 	"answers": [{
 		"answer": "1:n Beziehung",

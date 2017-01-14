@@ -9,10 +9,15 @@ import android.widget.TextView;
 /**
  * Created by olgamrost on 22/12/2016.
  */
-
 public class FinalActivity extends Activity {
 
-    double correctAnswersInt, totalQuestions;
+    /**
+     * The Correct answers int.
+     */
+    double correctAnswersInt, /**
+     * The Total questions.
+     */
+    totalQuestions;
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -31,6 +36,11 @@ public class FinalActivity extends Activity {
         totalResult.setText("Your score is " + score + "%");
     }
 
+    /**
+     * Go back clicked.
+     *
+     * @param v the v
+     */
     public void goBackClicked(final View v) {
 
         final Intent intent = new Intent(this, MainActivity.class);

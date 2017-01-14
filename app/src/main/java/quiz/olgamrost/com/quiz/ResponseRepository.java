@@ -20,16 +20,26 @@ import quiz.olgamrost.com.quiz.Json.Response;
 /**
  * Created by olgamrost on 20/12/2016.
  */
-
 public class ResponseRepository {
 
     private AssetManager assetManager;
     private Context context;
 
+    /**
+     * Instantiates a new Response repository.
+     *
+     * @param assetManager the asset manager
+     */
     public ResponseRepository(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
 
+    /**
+     * Get responses list.
+     *
+     * @param fileAddress the file address
+     * @return the list
+     */
     public List<Response> GetResponses(String fileAddress) {
 
         try {

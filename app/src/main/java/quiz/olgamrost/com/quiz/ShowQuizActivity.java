@@ -40,12 +40,15 @@ public class ShowQuizActivity extends AppCompatActivity {
     MediaPlayer mp1 = null, mp2 = null;
     List<Response> list;
 
+
+    /**
+     * Creates the layout of the activity and contains the main logic of the app
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_quiz);
-
-        Log.v("*** onCreate", "opened");
 
         question = (TextView) findViewById(R.id.question);
         answer1 = (Button) findViewById(R.id.answer1);
@@ -63,6 +66,8 @@ public class ShowQuizActivity extends AppCompatActivity {
         numberOfQuestionsAnswered = intent.getIntExtra("number", 0);
         correctAnswers = intent.getIntExtra("correctAnswers", 0);
         fromServer = intent.getStringExtra("server");
+
+        // if the quiz is from server
 
         if (fromServer.equals("yes")) {
 
@@ -107,6 +112,9 @@ public class ShowQuizActivity extends AppCompatActivity {
         numberOfQuestionsAnswered++;
     }
 
+    /**
+     * Randomizes answers and sets the four different answers on the buttons
+     */
     private void randomizeAnswers(List<AnswersBean> answers) {
 
         Log.v("*** randomizeAnswers", "opened");
@@ -175,9 +183,10 @@ public class ShowQuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * After clicking on one of the answers, the other buttons are disabled
+     */
     private void disableOtherButtons() {
-
-        Log.v("*** disableOtherButtons", "opened");
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,6 +277,11 @@ public class ShowQuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Show next question.
+     *
+     * @param v the v
+     */
     protected void showNextQuestion(View v) {
 
         if (numberOfQuestionsAnswered < totalQuestions) {
@@ -285,11 +299,14 @@ public class ShowQuizActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Gets server response.
+     */
     public void getServerResponse() {
         URL url = null;
         try {
-        //  url = new URL("http://quizmerbn.azurewebsites.net/networks");
-            url = new URL("http://10.0.2.2:3000/networks");
+          url = new URL("http://quizmerbn.azurewebsites.net/networks");
+//            url = new URL("http://10.0.2.2:3000/networks");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -318,6 +335,5 @@ public class ShowQuizActivity extends AppCompatActivity {
         } finally {
             urlConnection.disconnect();
         }
-
     }
 }

@@ -7,11 +7,6 @@
         android:title="@string/help"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menuSettings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/menuQuit"
         android:orderInCategory="100"
         android:title="@string/quit"

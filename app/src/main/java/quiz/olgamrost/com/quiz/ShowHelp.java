@@ -9,6 +9,9 @@ import android.webkit.WebView;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * The type Show help.
+ */
 public class ShowHelp extends Activity {
 
     private static final String MIMETYPE = "text/html";
@@ -39,6 +42,11 @@ public class ShowHelp extends Activity {
         view.bringToFront();
     }
 
+    /**
+     * Go back.
+     *
+     * @param v the v
+     */
     protected void goBack(View v){
 
         final Intent intent = new Intent(this, MainActivity.class);

@@ -12,12 +12,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     int numberOfQuestionsAnswered, numberOfCorrectAnswers;
-    String fileAddress, fromServer = "no", jsonFileText;
+    String fileAddress, fromServer = "no";
 
+    /**
+     * Method for creation the layout of the main activity.
+     * Initialises also the two variables that will be later used to count
+     * correct answers
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +64,10 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Method to indicate what happens when the user clicks either help
+     * or quit item in the menu
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -76,6 +88,11 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * Method to indicate what happens when the user clicks on one of the quizez
+     * from the navigation drawer
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -103,6 +120,9 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Opens new activity with extras, which shows a quiz with four answers
+     */
     public void showQuestions(final View cmd) {
 
         final Intent intent = new Intent(this, ShowQuizActivity.class);
@@ -110,11 +130,14 @@ public class MainActivity extends AppCompatActivity
         intent.putExtra("correctAnswers", numberOfCorrectAnswers);
         intent.putExtra("file", fileAddress);
         intent.putExtra("server", fromServer);
-        intent.putExtra("json", jsonFileText);
         startActivity(intent);
 
     }
 
+    /**
+     * Opens new activity with extras, which shows a quiz with three answers and
+     * different layout
+     */
     public void showThreeAnswerQuiz(final View cmd) {
 
         final Intent intent = new Intent(this, ShowThreeAnswersQuiz.class);
