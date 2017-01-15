@@ -4,7 +4,7 @@ require('mongoose-currency').loadType(mongoose);
 var Schema = mongoose.Schema;
 var Currency = mongoose.Types.Currency;
 
-// Answer Schema 
+// Answer Schema
 //subschema from Network Schema
 var answerSchema = new Schema({
     answer: { type: String, required: true },
@@ -12,7 +12,7 @@ var answerSchema = new Schema({
 },{ _id : false });
 
 
-// Network Schema 
+// Network Schema
 //apply datatypes for a schema
 var networkSchema = new Schema({
     question: { type: String, required: true, unique: true },

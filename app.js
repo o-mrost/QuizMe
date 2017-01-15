@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var azureUrl = process.env.CONNECTION_STRING;
 var url = 'mongodb://localhost:27017/QuizApp';
 
-mongoose.connect(url);
+mongoose.connect(azureUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
